@@ -1,0 +1,23 @@
+constants
+=========
+
+.. automodule:: yarara.constants
+   
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

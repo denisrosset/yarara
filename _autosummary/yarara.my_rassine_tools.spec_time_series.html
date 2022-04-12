@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spec_time_series &#8212; yarara</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="paths" href="yarara.paths.html" />
+    <link rel="prev" title="my_rassine_tools" href="yarara.my_rassine_tools.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">yarara</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Home page
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../api.html">
+   API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="yarara.html">
+     yarara
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="yarara.Rassine_functions.html">
+       Rassine_functions
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.analysis.html">
+       analysis
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.analysis.table.html">
+         table
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.analysis.tableXY.html">
+         tableXY
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="yarara.constants.html">
+       constants
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.deprecated.html">
+       deprecated
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.deprecated.try_field.html">
+         try_field
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.io.html">
+       io
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.io.open_pickle.html">
+         open_pickle
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.io.pickle_dump.html">
+         pickle_dump
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.io.save_pickle.html">
+         save_pickle
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.mathfun.html">
+       mathfun
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.mathfun.gaussian.html">
+         gaussian
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.mathfun.lorentzian.html">
+         lorentzian
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.mathfun.parabole.html">
+         parabole
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.mathfun.sinus.html">
+         sinus
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.mathfun.voigt.html">
+         voigt
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="yarara.my_classes.html">
+       my_classes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="yarara.my_functions.html">
+       my_functions
+      </a>
+     </li>
+     <li class="toctree-l3 current active has-children">
+      <a class="reference internal" href="yarara.my_rassine_tools.html">
+       my_rassine_tools
+      </a>
+      <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul class="current">
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         spec_time_series
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="yarara.paths.html">
+       paths
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.plots.html">
+       plots
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+      <label for="toctree-checkbox-8">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.plots.auto_axis.html">
+         auto_axis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.plots.init_matplotlib.html">
+         init_matplotlib
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.plots.my_colormesh.html">
+         my_colormesh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.plots.plot_color_box.html">
+         plot_color_box
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.stats.html">
+       stats
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.IQ.html">
+         IQ
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.clustering.html">
+         clustering
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.combination.html">
+         combination
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.find_nearest.html">
+         find_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.flat_clustering.html">
+         flat_clustering
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.identify_nearest.html">
+         identify_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.local_max.html">
+         local_max
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.mad.html">
+         mad
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.match_nearest.html">
+         match_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.merge_borders.html">
+         merge_borders
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.rm_outliers.html">
+         rm_outliers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.smooth.html">
+         smooth
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.stats.smooth2d.html">
+         smooth2d
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.sts.html">
+       sts
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.activity.html">
+         activity
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.analysis.html">
+         analysis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.extract.html">
+         extract
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.instrument.html">
+         instrument
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.io.html">
+         io
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.limbo.html">
+         limbo
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.management.html">
+         management
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.outliers.html">
+         outliers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.processing.html">
+         processing
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.telluric.html">
+         telluric
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.sts.util.html">
+         util
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="yarara.util.html">
+       util
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.ccf.html">
+         ccf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.doppler_r.html">
+         doppler_r
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.flux_norm_std.html">
+         flux_norm_std
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.get_phase.html">
+         get_phase
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.map_rnr.html">
+         map_rnr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.my_ruler.html">
+         my_ruler
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.print_box.html">
+         print_box
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.print_iter.html">
+         print_iter
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.ratio_line.html">
+         ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.yarara_artefact_suppressed.html">
+         yarara_artefact_suppressed
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>spec_time_series</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="spec-time-series">
+<h1>spec_time_series<a class="headerlink" href="#spec-time-series" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spec_time_series</span></span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_dico_tree" title="yarara.my_rassine_tools.spec_time_series.import_dico_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_dico_tree</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_material" title="yarara.my_rassine_tools.spec_time_series.import_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_material</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_rassine_output" title="yarara.my_rassine_tools.spec_time_series.import_rassine_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_rassine_output</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_spectrum" title="yarara.my_rassine_tools.spec_time_series.import_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_spectrum</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_star_info" title="yarara.my_rassine_tools.spec_time_series.import_star_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_star_info</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.import_table" title="yarara.my_rassine_tools.spec_time_series.import_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_table</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.supress_time_spectra" title="yarara.my_rassine_tools.spec_time_series.supress_time_spectra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supress_time_spectra</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.uncorrect_hole" title="yarara.my_rassine_tools.spec_time_series.uncorrect_hole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncorrect_hole</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_activity_index" title="yarara.my_rassine_tools.spec_time_series.yarara_activity_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_activity_index</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary" title="yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_analyse_summary</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_ccf" title="yarara.my_rassine_tools.spec_time_series.yarara_ccf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_ccf</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_activity" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_activity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_activity</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_borders_pxl" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_borders_pxl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_borders_pxl</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_brute" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_brute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_brute</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_cosmics" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_cosmics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_cosmics</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_frog" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_frog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_frog</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_mad" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_mad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_mad</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_oxygen" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_oxygen"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_oxygen</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_pattern" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_pattern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_pattern</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_smooth" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_smooth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_smooth</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_gradient" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_telluric_gradient</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_proxy" title="yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_proxy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_correct_telluric_proxy</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum" title="yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_cut_spectrum</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_berv_value" title="yarara.my_rassine_tools.spec_time_series.yarara_get_berv_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_get_berv_value</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_orders" title="yarara.my_rassine_tools.spec_time_series.yarara_get_orders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_get_orders</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_pixels" title="yarara.my_rassine_tools.spec_time_series.yarara_get_pixels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_get_pixels</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_map" title="yarara.my_rassine_tools.spec_time_series.yarara_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_map</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_master_ccf" title="yarara.my_rassine_tools.spec_time_series.yarara_master_ccf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_master_ccf</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_median_master" title="yarara.my_rassine_tools.spec_time_series.yarara_median_master"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_median_master</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_median_master_backup" title="yarara.my_rassine_tools.spec_time_series.yarara_median_master_backup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_median_master_backup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux" title="yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_non_zero_flux</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_obs_info" title="yarara.my_rassine_tools.spec_time_series.yarara_obs_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_obs_info</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_poissonian_noise" title="yarara.my_rassine_tools.spec_time_series.yarara_poissonian_noise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_poissonian_noise</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_contam" title="yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_contam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_produce_mask_contam</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_frog" title="yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_frog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_produce_mask_frog</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_retropropagation_correction" title="yarara.my_rassine_tools.spec_time_series.yarara_retropropagation_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_retropropagation_correction</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_star_info" title="yarara.my_rassine_tools.spec_time_series.yarara_star_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_star_info</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#yarara.my_rassine_tools.spec_time_series.yarara_telluric" title="yarara.my_rassine_tools.spec_time_series.yarara_telluric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yarara_telluric</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">List of members of spec_time_series</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_rassine_output">
+<span class="sig-name descname"><span class="pre">import_rassine_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_rassine_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_rassine_output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_star_info">
+<span class="sig-name descname"><span class="pre">import_star_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_star_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_star_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_table">
+<span class="sig-name descname"><span class="pre">import_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_material">
+<span class="sig-name descname"><span class="pre">import_material</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_material"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_material" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_dico_tree">
+<span class="sig-name descname"><span class="pre">import_dico_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_dico_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_dico_tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.import_spectrum">
+<span class="sig-name descname"><span class="pre">import_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.import_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.import_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_star_info">
+<span class="sig-name descname"><span class="pre">yarara_star_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Rv_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simbad_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magB</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mstar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Rstar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Vsini</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Vmicro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Teff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_g</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FeH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Prot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CCF_delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Pmag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stellar_template</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_star_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_star_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_master_ccf">
+<span class="sig-name descname"><span class="pre">yarara_master_ccf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rvs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_master_ccf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_master_ccf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_poissonian_noise">
+<span class="sig-name descname"><span class="pre">yarara_poissonian_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_wanted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flat_snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_poissonian_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_poissonian_noise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_obs_info">
+<span class="sig-name descname"><span class="pre">yarara_obs_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[None,</span> <span class="pre">None]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airmass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seeing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">humidity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_obs_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_obs_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_get_orders">
+<span class="sig-name descname"><span class="pre">yarara_get_orders</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_get_orders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_get_pixels">
+<span class="sig-name descname"><span class="pre">yarara_get_pixels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_get_pixels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.supress_time_spectra">
+<span class="sig-name descname"><span class="pre">supress_time_spectra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liste</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'temp'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.supress_time_spectra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.supress_time_spectra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary">
+<span class="sig-name descname"><span class="pre">yarara_analyse_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rm_old</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_analyse_summary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_get_berv_value">
+<span class="sig-name descname"><span class="pre">yarara_get_berv_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_graphic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_get_berv_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_get_berv_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux">
+<span class="sig-name descname"><span class="pre">yarara_non_zero_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spectrum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_non_zero_flux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_median_master_backup">
+<span class="sig-name descname"><span class="pre">yarara_median_master_backup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supress_telluric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_spectrum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">telluric_tresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5750</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-</span> <span class="pre">100000,</span> <span class="pre">100000,</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[None,</span> <span class="pre">50]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_median_master_backup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_median_master_backup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_median_master">
+<span class="sig-name descname"><span class="pre">yarara_median_master</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_box</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supress_telluric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_spectrum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5750</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_berv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_snr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">telluric_tresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-</span> <span class="pre">100000,</span> <span class="pre">100000,</span> <span class="pre">1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[None,</span> <span class="pre">50]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_median_master"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_median_master" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum">
+<span class="sig-name descname"><span class="pre">yarara_cut_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_cut_spectrum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_activity_index">
+<span class="sig-name descname"><span class="pre">yarara_activity_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calib_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substract_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">np.inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_activity_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_activity_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_telluric">
+<span class="sig-name descname"><span class="pre">yarara_telluric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_anchors'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_broad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_ccf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slope'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ccf_oversampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_telluric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_telluric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_ccf">
+<span class="sig-name descname"><span class="pre">yarara_ccf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ccf_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'weight_rv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treshold_telluric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_ccf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_ccf_profile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalisation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'left'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">del_outside_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bis_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ccf_oversampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_borders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_brute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">squared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">np.inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substract_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_ccf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_ccf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_map">
+<span class="sig-name descname"><span class="pre">yarara_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">planet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modulo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substract_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">np.inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_pattern">
+<span class="sig-name descname"><span class="pre">yarara_correct_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.1,</span> <span class="pre">20]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_red</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdb_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_pattern" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_smooth">
+<span class="sig-name descname"><span class="pre">yarara_correct_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_ang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_smooth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_retropropagation_correction">
+<span class="sig-name descname"><span class="pre">yarara_retropropagation_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correction_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_smooth'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_cosmics'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_retropropagation_correction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_retropropagation_correction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_proxy">
+<span class="sig-name descname"><span class="pre">yarara_correct_telluric_proxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_fourier'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_dico_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'telluric'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'master'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'berv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxies_corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['h2o_depth',</span> <span class="pre">'h2o_fwhm']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxies_detrending</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_r_corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_telluric_proxy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_proxy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_oxygen">
+<span class="sig-name descname"><span class="pre">yarara_correct_oxygen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_telluric'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'berv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'master'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5760</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5850</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oxygene_bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[5787,</span> <span class="pre">5835],</span> <span class="pre">[6275,</span> <span class="pre">6340],</span> <span class="pre">[6800,</span> <span class="pre">6950]]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_oxygen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_oxygen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_gradient">
+<span class="sig-name descname"><span class="pre">yarara_correct_telluric_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico_detection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_fourier'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_dico_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_oxygen'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'berv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'master'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inst_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">110000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_pca_comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_pca_comp_kept</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_pca_max_kept</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calib_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_telluric_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_gradient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_activity">
+<span class="sig-name descname"><span class="pre">yarara_correct_activity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_telluric'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3900</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proxy_corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['CaII']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_activity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_activity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_cosmics">
+<span class="sig-name descname"><span class="pre">yarara_correct_cosmics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bypass_warning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_cosmics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_cosmics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_mad">
+<span class="sig-name descname"><span class="pre">yarara_correct_mad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_mad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_mad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_mad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_contam">
+<span class="sig-name descname"><span class="pre">yarara_produce_mask_contam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frog_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">root</span> <span class="pre">+</span> <span class="pre">'/Python/Material/Contam_HARPN.p'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_produce_mask_contam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_contam" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_frog">
+<span class="sig-name descname"><span class="pre">yarara_produce_mask_frog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frog_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">root</span> <span class="pre">+</span> <span class="pre">'/Python/Material/Ghost_HARPS03.p'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_produce_mask_frog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_frog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_frog">
+<span class="sig-name descname"><span class="pre">yarara_correct_frog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stitching'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">berv_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3975</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_min_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_max_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equal_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_pca_comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pca_comp_kept</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcorr_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">treshold_contam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_pca</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'empca'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_frog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_frog" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_borders_pxl">
+<span class="sig-name descname"><span class="pre">yarara_correct_borders_pxl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels_to_reject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">4095]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_borders_pxl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_borders_pxl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.yarara_correct_brute">
+<span class="sig-name descname"><span class="pre">yarara_correct_brute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_dico</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matching_mad'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent_removed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extended</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ghost2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HARPS03'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">borders_pxl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.yarara_correct_brute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.yarara_correct_brute" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yarara.my_rassine_tools.spec_time_series.uncorrect_hole">
+<span class="sig-name descname"><span class="pre">uncorrect_hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conti_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_forbidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">np.inf]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/my_rassine_tools.html#spec_time_series.uncorrect_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.my_rassine_tools.spec_time_series.uncorrect_hole" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="yarara.my_rassine_tools.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">my_rassine_tools</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="yarara.paths.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">paths</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+        &copy; Copyright 2022, Michael Cretignier and Denis Rosset.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

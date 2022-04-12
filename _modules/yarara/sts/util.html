@@ -1,0 +1,1422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yarara.sts.util &#8212; yarara</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">yarara</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  General information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../index.html">
+   Home page
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../api.html">
+   API
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../../_autosummary/yarara.html">
+     yarara
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
+       Rassine_functions
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
+       analysis
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+      <label for="toctree-checkbox-3">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.analysis.table.html">
+         table
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.analysis.tableXY.html">
+         tableXY
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../_autosummary/yarara.constants.html">
+       constants
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.deprecated.html">
+       deprecated
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+      <label for="toctree-checkbox-4">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.deprecated.try_field.html">
+         try_field
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.io.html">
+       io
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+      <label for="toctree-checkbox-5">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.io.open_pickle.html">
+         open_pickle
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.io.pickle_dump.html">
+         pickle_dump
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.io.save_pickle.html">
+         save_pickle
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.mathfun.html">
+       mathfun
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+      <label for="toctree-checkbox-6">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.mathfun.gaussian.html">
+         gaussian
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.mathfun.lorentzian.html">
+         lorentzian
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.mathfun.parabole.html">
+         parabole
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.mathfun.sinus.html">
+         sinus
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.mathfun.voigt.html">
+         voigt
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
+       my_classes
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
+       my_functions
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
+       my_rassine_tools
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+      <label for="toctree-checkbox-7">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.spec_time_series.html">
+         spec_time_series
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../_autosummary/yarara.paths.html">
+       paths
+      </a>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.plots.html">
+       plots
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+      <label for="toctree-checkbox-8">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.plots.auto_axis.html">
+         auto_axis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.plots.init_matplotlib.html">
+         init_matplotlib
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.plots.my_colormesh.html">
+         my_colormesh
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.plots.plot_color_box.html">
+         plot_color_box
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.stats.html">
+       stats
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+      <label for="toctree-checkbox-9">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.IQ.html">
+         IQ
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.clustering.html">
+         clustering
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.combination.html">
+         combination
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.find_nearest.html">
+         find_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.flat_clustering.html">
+         flat_clustering
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.identify_nearest.html">
+         identify_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.local_max.html">
+         local_max
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.mad.html">
+         mad
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.match_nearest.html">
+         match_nearest
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.merge_borders.html">
+         merge_borders
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.rm_outliers.html">
+         rm_outliers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.smooth.html">
+         smooth
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.stats.smooth2d.html">
+         smooth2d
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.sts.html">
+       sts
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+      <label for="toctree-checkbox-10">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.activity.html">
+         activity
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
+         analysis
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
+         extract
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.instrument.html">
+         instrument
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.io.html">
+         io
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
+         limbo
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
+         management
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.outliers.html">
+         outliers
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.processing.html">
+         processing
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.telluric.html">
+         telluric
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.sts.util.html">
+         util
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toctree-l3 has-children">
+      <a class="reference internal" href="../../../_autosummary/yarara.util.html">
+       util
+      </a>
+      <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+      <label for="toctree-checkbox-11">
+       <i class="fas fa-chevron-down">
+       </i>
+      </label>
+      <ul>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.ccf.html">
+         ccf
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.doppler_r.html">
+         doppler_r
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.flux_norm_std.html">
+         flux_norm_std
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.get_phase.html">
+         get_phase
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.map_rnr.html">
+         map_rnr
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.my_ruler.html">
+         my_ruler
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.print_box.html">
+         print_box
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.print_iter.html">
+         print_iter
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
+         ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.yarara_artefact_suppressed.html">
+         yarara_artefact_suppressed
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <h1>Source code for yarara.sts.util</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">..analysis</span> <span class="kn">import</span> <span class="n">tableXY</span>
+<span class="kn">from</span> <span class="nn">..paths</span> <span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span> <span class="nn">..plots</span> <span class="kn">import</span> <span class="n">my_colormesh</span>
+<span class="kn">from</span> <span class="nn">..stats</span> <span class="kn">import</span> <span class="n">IQ</span><span class="p">,</span> <span class="n">find_nearest</span><span class="p">,</span> <span class="n">flat_clustering</span><span class="p">,</span> <span class="n">smooth</span>
+<span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">doppler_r</span><span class="p">,</span> <span class="n">flux_norm_std</span><span class="p">,</span> <span class="n">print_box</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..my_rassine_tools</span> <span class="kn">import</span> <span class="n">spec_time_series</span>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># YARARA NONE ZERO FLUX</span>
+<span class="c1"># =============================================================================</span>
+
+
+<div class="viewcode-block" id="yarara_non_zero_flux"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_non_zero_flux.html#yarara.sts.util.yarara_non_zero_flux">[docs]</a><span class="k">def</span> <span class="nf">yarara_non_zero_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">spectrum</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">file_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">import_spectrum</span><span class="p">()</span>
+    <span class="n">hole_left</span> <span class="o">=</span> <span class="n">file_test</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;hole_left&quot;</span><span class="p">]</span>
+    <span class="n">hole_right</span> <span class="o">=</span> <span class="n">file_test</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;hole_right&quot;</span><span class="p">]</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">file_test</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid</span> <span class="o">&lt;</span> <span class="n">hole_left</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">grid</span> <span class="o">&gt;</span> <span class="n">hole_right</span><span class="p">)</span>
+
+    <span class="n">directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;RASSI*.p&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">spectrum</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">flux</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux&quot;</span><span class="p">]</span>
+            <span class="n">zero</span> <span class="o">=</span> <span class="n">flux</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">min_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">flux</span><span class="p">[</span><span class="n">flux</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">])</span>
+            <span class="n">flux</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">zero</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_value</span>
+            <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] Removing null values of the spectrum&quot;</span><span class="p">)</span>
+        <span class="n">zero</span> <span class="o">=</span> <span class="n">spectrum</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">min_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="n">spectrum</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">spectrum</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">zero</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_value</span>
+        <span class="k">return</span> <span class="n">spectrum</span></div>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1">#     CREATE MEDIAN SPECTRUM TELLURIC SUPRESSED</span>
+<span class="c1"># =============================================================================</span>
+
+
+<div class="viewcode-block" id="yarara_median_master_backup"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_median_master_backup.html#yarara.sts.util.yarara_median_master_backup">[docs]</a><span class="k">def</span> <span class="nf">yarara_median_master_backup</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
+    <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Produce a median master by masking region of the spectrum</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    sub_dico : The sub_dictionnary used to  select the continuum</span>
+<span class="sd">    continuum : The continuum to select (either linear or cubic)</span>
+<span class="sd">    telluric_tresh : Treshold used to cover the position of the contaminated wavelength</span>
+<span class="sd">    wave_min : The minimum xlim axis</span>
+<span class="sd">    wave_max : The maximum xlim axis</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mask_percentile</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : PRODUCE MASTER MEDIAN SPECTRUM ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
+    <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-6</span>
+
+    <span class="n">planet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">planet</span>
+
+    <span class="n">kw</span> <span class="o">=</span> <span class="s2">&quot;_planet&quot;</span> <span class="o">*</span> <span class="n">planet</span>
+    <span class="k">if</span> <span class="n">kw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- PLANET ACTIVATED ----&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sub_dico</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sub_dico</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dico_actif</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- DICO </span><span class="si">%s</span><span class="s2"> used ----&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sub_dico</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;telluric_fwhm&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fwhm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fwhm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;telluric_fwhm&quot;</span><span class="p">])</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">fwhm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span>
+
+    <span class="n">fwhm_max</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CORALIE&quot;</span><span class="p">]</span>
+    <span class="n">fwhm_min</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CORALIE&quot;</span><span class="p">]</span>
+    <span class="n">fwhm_default</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CORALIE&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">fwhm_max</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;[WARNING] FWHM of tellurics larger than </span><span class="si">%.0f</span><span class="s2"> km/s (</span><span class="si">%.1f</span><span class="s2">), reduced to default value of </span><span class="si">%.0f</span><span class="s2"> km/s&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">fwhm_max</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="mi">95</span><span class="p">),</span> <span class="n">fwhm_default</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">fwhm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">fwhm_default</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">fwhm_min</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;FWHM of tellurics smaller than </span><span class="si">%.0f</span><span class="s2"> km/s (</span><span class="si">%.1f</span><span class="s2">), increased to default value of </span><span class="si">%.0f</span><span class="s2"> km/s&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">fwhm_min</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="mi">95</span><span class="p">),</span> <span class="n">fwhm_default</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">fwhm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">fwhm_default</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> [INFO] FWHM of tellurics : </span><span class="si">%.1f</span><span class="s2"> km/s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="mi">95</span><span class="p">)))</span>
+
+    <span class="n">all_flux</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_conti</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;filename&quot;</span><span class="p">])):</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">wavelength</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wave</span> <span class="o">=</span> <span class="n">wavelength</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux&quot;</span> <span class="o">+</span> <span class="n">kw</span><span class="p">]</span>
+        <span class="n">f_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux_err&quot;</span><span class="p">]</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">sub_dico</span><span class="p">][</span><span class="s2">&quot;continuum_&quot;</span> <span class="o">+</span> <span class="n">continuum</span><span class="p">]</span>
+        <span class="n">c_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;continuum_err&quot;</span><span class="p">]</span>
+
+        <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
+
+        <span class="n">all_flux</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">all_conti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="n">all_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_flux</span><span class="p">)</span>
+    <span class="n">all_conti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_conti</span><span class="p">)</span>
+    <span class="n">all_flux_norm</span> <span class="o">=</span> <span class="n">all_flux</span> <span class="o">/</span> <span class="n">all_conti</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">jdb_range</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">jdb_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">jdb_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">jdb_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">jdb_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="n">Fore</span><span class="o">.</span><span class="n">YELLOW</span>
+            <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> [WARNING] Not enough spectra </span><span class="si">%s</span><span class="s2"> the specified temporal range&quot;</span>
+            <span class="o">%</span> <span class="p">([</span><span class="s2">&quot;inside&quot;</span><span class="p">,</span> <span class="s2">&quot;outside&quot;</span><span class="p">][</span><span class="n">jdb_range</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+            <span class="o">+</span> <span class="n">Fore</span><span class="o">.</span><span class="n">RESET</span>
+        <span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> [INFO] </span><span class="si">%.0f</span><span class="s2"> spectra </span><span class="si">%s</span><span class="s2"> the specified temporal range can be used for the median</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot;inside&quot;</span><span class="p">,</span> <span class="s2">&quot;outside&quot;</span><span class="p">][</span><span class="n">jdb_range</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="p">)</span>
+
+    <span class="n">all_flux</span> <span class="o">=</span> <span class="n">all_flux</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">all_conti</span> <span class="o">=</span> <span class="n">all_conti</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">all_flux_norm</span> <span class="o">=</span> <span class="n">all_flux_norm</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="n">berv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;berv&quot;</span> <span class="o">+</span> <span class="n">kw</span><span class="p">])[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">rv_shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;rv_shift&quot;</span><span class="p">])[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">berv</span> <span class="o">=</span> <span class="n">berv</span> <span class="o">-</span> <span class="n">rv_shift</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/model_telluric.p&quot;</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+    <span class="n">spectre</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;flux_norm&quot;</span><span class="p">]</span>
+    <span class="n">telluric</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">spectre</span><span class="p">)</span>
+    <span class="n">telluric</span><span class="o">.</span><span class="n">find_min</span><span class="p">()</span>
+
+    <span class="n">all_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">telluric</span><span class="o">.</span><span class="n">x_min</span><span class="p">,</span> <span class="n">telluric</span><span class="o">.</span><span class="n">y_min</span><span class="p">,</span> <span class="n">telluric</span><span class="o">.</span><span class="n">index_min</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">all_min</span> <span class="o">=</span> <span class="n">all_min</span><span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">all_min</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">telluric_tresh</span><span class="p">]</span>
+    <span class="n">all_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+        <span class="n">all_min</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">fwhm</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">/</span> <span class="mf">3e5</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)),</span>
+        <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">all_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">all_width</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">supress_telluric</span><span class="p">:</span>
+        <span class="n">borders</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">all_min</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">all_width</span><span class="p">,</span> <span class="n">all_min</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">all_width</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">telluric_mask</span> <span class="o">=</span> <span class="n">flat_clustering</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="n">borders</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+        <span class="n">all_mask2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">berv</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">telluric_mask</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">grid</span><span class="p">)</span>
+            <span class="n">mask</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">all_mask2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">all_mask2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_mask2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">all_mask2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">))</span>
+
+    <span class="c1">#        i=-1</span>
+    <span class="c1">#        for j in tqdm(berv):</span>
+    <span class="c1">#            i+=1</span>
+    <span class="c1">#            borders = np.array([all_min[:,2]-all_width[i],all_min[:,2]+all_width[i]]).T</span>
+    <span class="c1">#            telluric_mask = flat_clustering(len(grid),borders)!=0</span>
+    <span class="c1">#            mask = tableXY(doppler_r(grid,j*1000)[0],telluric_mask)</span>
+    <span class="c1">#            mask.interpolate(new_grid=wavelength,method=&#39;linear&#39;)</span>
+    <span class="c1">#            all_mask2.append(mask.y!=0)</span>
+    <span class="c1">#         all_mask2 = np.array(all_mask2).astype(&#39;float&#39;)</span>
+
+    <span class="k">if</span> <span class="n">supress_telluric</span><span class="p">:</span>
+        <span class="n">telluric_mask</span> <span class="o">=</span> <span class="n">telluric</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">telluric_tresh</span><span class="p">)</span>
+        <span class="n">all_mask</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">berv</span><span class="p">):</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">telluric_mask</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">grid</span><span class="p">)</span>
+            <span class="n">mask</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">all_mask</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">all_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_mask</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">all_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">shift_spectrum</span><span class="p">:</span>
+        <span class="n">rv_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;ccf_rv&quot;</span><span class="p">])</span>
+        <span class="n">rv_star</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">rv_star</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">rv_star</span><span class="p">)</span>
+        <span class="n">rv_star</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">rv_star</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">rv_star</span><span class="p">):</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">doppler_r</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">all_flux_norm</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="mi">0</span> <span class="o">*</span> <span class="n">wavelength</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">mask</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">all_flux_norm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># print(len(rv))</span>
+            <span class="c1"># print(np.shape(all_flux))</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">rv_star</span><span class="p">):</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">doppler_r</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">all_flux</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="mi">0</span> <span class="o">*</span> <span class="n">wavelength</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">mask</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">all_flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">doppler_r</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">all_conti</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="mi">0</span> <span class="o">*</span> <span class="n">wavelength</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">mask</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">all_conti</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># plt.plot(wavelength,np.product(all_mask,axis=0))</span>
+    <span class="c1"># plt.plot(wavelength,np.product(all_mask2,axis=0))</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Percent always contaminated metric1 : </span><span class="si">%.3f</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">all_mask</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Percent always contaminated metric2 : </span><span class="si">%.3f</span><span class="s2"> </span><span class="si">%%</span><span class="s2">&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">all_mask2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">all_mask_nan1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">all_mask</span>
+    <span class="n">all_mask_nan1</span><span class="p">[</span><span class="n">all_mask_nan1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">all_mask_nan2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">all_mask2</span>
+    <span class="n">all_mask_nan2</span><span class="p">[</span><span class="n">all_mask_nan2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">mask_percentile</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">wavelength</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mask_percentile</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="p">)</span>
+
+    <span class="n">med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">))</span>
+    <span class="n">med</span><span class="p">[</span><span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span>
+        <span class="n">all_flux_norm</span><span class="p">[:,</span> <span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">mask_percentile</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">med</span><span class="p">[</span><span class="o">~</span><span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">[:,</span> <span class="o">~</span><span class="n">mask_percentile</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="mi">50</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">mask_percentile</span>
+
+    <span class="c1"># med1 = np.nanmedian(all_flux_norm*all_mask_nan1,axis=0)</span>
+    <span class="c1"># med2 = np.nanmedian(all_flux_norm*all_mask_nan2,axis=0)</span>
+
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_flux</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_conti</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_flux</span> <span class="o">*</span> <span class="n">all_mask_nan1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_conti</span> <span class="o">*</span> <span class="n">all_mask_nan1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon</span>
+    <span class="p">)</span>
+    <span class="n">mean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_flux</span> <span class="o">*</span> <span class="n">all_mask_nan2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">all_conti</span> <span class="o">*</span> <span class="n">all_mask_nan2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon</span>
+    <span class="p">)</span>
+    <span class="n">mean2</span><span class="p">[</span><span class="n">mean2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">mean1</span><span class="p">[</span><span class="n">mean1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">mean1</span><span class="p">[</span><span class="n">mean1</span> <span class="o">!=</span> <span class="n">mean1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean2</span><span class="p">[</span><span class="n">mean1</span> <span class="o">!=</span> <span class="n">mean1</span><span class="p">]</span>
+    <span class="n">mean1</span><span class="p">[</span><span class="n">mean1</span> <span class="o">!=</span> <span class="n">mean1</span><span class="p">]</span> <span class="o">=</span> <span class="n">med</span><span class="p">[</span><span class="n">mean1</span> <span class="o">!=</span> <span class="n">mean1</span><span class="p">]</span>
+    <span class="n">mean2</span><span class="p">[</span><span class="n">mean2</span> <span class="o">!=</span> <span class="n">mean2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean1</span><span class="p">[</span><span class="n">mean2</span> <span class="o">!=</span> <span class="n">mean2</span><span class="p">]</span>
+    <span class="c1"># med1[med1!=med1] = mean1[med1!=med1]</span>
+    <span class="c1"># med2[med2!=med2] = mean1[med2!=med2]</span>
+    <span class="n">all_flux_diff_med</span> <span class="o">=</span> <span class="n">all_flux_norm</span> <span class="o">-</span> <span class="n">med</span>
+    <span class="n">tresh</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQ</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">all_flux_diff_med</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">all_flux_diff_med</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+    <span class="n">mean1</span><span class="p">[</span><span class="n">mean1</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">tresh</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">!=</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">mean1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">med</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">med</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">mean1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mean1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mean2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># plt.plot(wavelength,med,color=&#39;b&#39;,ls=&#39;-.&#39;)</span>
+    <span class="c1"># plt.plot(wavelength,med1,color=&#39;g&#39;,ls=&#39;-.&#39;)</span>
+    <span class="c1"># plt.plot(wavelength,med2,color=&#39;r&#39;,ls=&#39;-.&#39;)</span>
+
+    <span class="n">all_flux_diff_mean</span> <span class="o">=</span> <span class="n">all_flux_norm</span> <span class="o">-</span> <span class="n">mean</span>
+    <span class="n">all_flux_diff_med</span> <span class="o">=</span> <span class="n">all_flux_norm</span> <span class="o">-</span> <span class="n">med</span>
+    <span class="n">all_flux_diff1_mean</span> <span class="o">=</span> <span class="n">all_flux_norm</span> <span class="o">-</span> <span class="n">mean1</span>
+    <span class="c1"># all_flux_diff1_med = all_flux_norm - med1</span>
+    <span class="c1"># all_flux_diff2_mean = all_flux_norm - mean2</span>
+    <span class="c1"># all_flux_diff2_med = all_flux_norm - med2</span>
+
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">all_flux_diff_mean</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
+        <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+        <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">all_mask2</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">all_flux_diff_mean</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
+        <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+        <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">all_mask</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">berv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median&quot;</span><span class="p">)</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">wavelength</span><span class="p">[</span><span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_mask</span><span class="p">)),</span>
+            <span class="n">all_flux_diff_med</span><span class="p">[:,</span> <span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Masked mean&quot;</span><span class="p">)</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">wavelength</span><span class="p">[</span><span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_mask</span><span class="p">)),</span>
+            <span class="n">all_flux_diff1_mean</span><span class="p">[:,</span> <span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wavelength</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">!=</span> <span class="s2">&quot;median&quot;</span><span class="p">:</span>
+        <span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">med</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">all_flux_diff_med</span><span class="p">)</span>
+
+    <span class="n">ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">])</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yarara_non_zero_flux</span><span class="p">(</span><span class="n">spectrum</span><span class="o">=</span><span class="n">ref</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ref</span>
+
+    <span class="n">load</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">load</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;Analyse_material.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="yarara_median_master"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_median_master.html#yarara.sts.util.yarara_median_master">[docs]</a><span class="k">def</span> <span class="nf">yarara_median_master</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+    <span class="n">smooth_box</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
+    <span class="n">bin_berv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">bin_snr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Produce a median master by masking region of the spectrum</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    sub_dico : The sub_dictionnary used to  select the continuum</span>
+<span class="sd">    continuum : The continuum to select (either linear or cubic)</span>
+<span class="sd">    telluric_tresh : Treshold used to cover the position of the contaminated wavelength</span>
+<span class="sd">    wave_min : The minimum xlim axis</span>
+<span class="sd">    wave_max : The maximum xlim axis</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">method</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yarara_median_master_backup</span><span class="p">(</span>
+            <span class="n">sub_dico</span><span class="o">=</span><span class="n">sub_dico</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">continuum</span><span class="o">=</span><span class="n">continuum</span><span class="p">,</span>
+            <span class="n">telluric_tresh</span><span class="o">=</span><span class="n">telluric_tresh</span><span class="p">,</span>
+            <span class="n">wave_min</span><span class="o">=</span><span class="n">wave_min</span><span class="p">,</span>
+            <span class="n">wave_max</span><span class="o">=</span><span class="n">wave_max</span><span class="p">,</span>
+            <span class="n">jdb_range</span><span class="o">=</span><span class="n">jdb_range</span><span class="p">,</span>
+            <span class="n">supress_telluric</span><span class="o">=</span><span class="n">supress_telluric</span><span class="p">,</span>
+            <span class="n">shift_spectrum</span><span class="o">=</span><span class="n">shift_spectrum</span><span class="p">,</span>
+            <span class="n">mask_percentile</span><span class="o">=</span><span class="n">mask_percentile</span><span class="p">,</span>
+            <span class="n">save</span><span class="o">=</span><span class="n">save</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span>
+        <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : PRODUCE MASTER MAX SPECTRUM ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
+        <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
+        <span class="n">tab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span>
+        <span class="n">planet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">planet</span>
+
+        <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-12</span>
+
+        <span class="n">kw</span> <span class="o">=</span> <span class="s2">&quot;_planet&quot;</span> <span class="o">*</span> <span class="n">planet</span>
+        <span class="k">if</span> <span class="n">kw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- PLANET ACTIVATED ----&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sub_dico</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">sub_dico</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dico_actif</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---- DICO </span><span class="si">%s</span><span class="s2"> used ----&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sub_dico</span><span class="p">))</span>
+
+        <span class="n">all_flux</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_conti</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s2">&quot;filename&quot;</span><span class="p">])):</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="p">:</span>
+                <span class="n">wavelength</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">wave</span> <span class="o">=</span> <span class="n">wavelength</span>
+
+            <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux&quot;</span> <span class="o">+</span> <span class="n">kw</span><span class="p">]</span>
+            <span class="n">f_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux_err&quot;</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">sub_dico</span><span class="p">][</span><span class="s2">&quot;continuum_&quot;</span> <span class="o">+</span> <span class="n">continuum</span><span class="p">]</span>
+            <span class="n">c_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;continuum_err&quot;</span><span class="p">]</span>
+
+            <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
+
+            <span class="n">all_flux</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_norm</span><span class="p">)</span>
+            <span class="n">all_conti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">][</span><span class="s2">&quot;continuum_&quot;</span> <span class="o">+</span> <span class="n">continuum</span><span class="p">])</span>
+
+        <span class="n">all_conti</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_conti</span><span class="p">)</span>
+        <span class="n">all_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_flux</span><span class="p">)</span> <span class="o">*</span> <span class="n">all_conti</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">all_flux_backup</span> <span class="o">=</span> <span class="n">all_flux</span> <span class="o">/</span> <span class="n">all_conti</span>
+        <span class="n">med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">all_flux_backup</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">berv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s2">&quot;berv&quot;</span><span class="p">])</span>
+        <span class="n">rv_shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s2">&quot;rv_shift&quot;</span><span class="p">])</span>
+        <span class="n">berv</span> <span class="o">=</span> <span class="n">berv</span> <span class="o">-</span> <span class="n">rv_shift</span>
+
+        <span class="n">sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">berv</span><span class="p">)</span>
+        <span class="n">snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">])</span>
+        <span class="n">snr_sorted</span> <span class="o">=</span> <span class="n">snr</span><span class="p">[</span><span class="n">sort</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">bin_snr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">bin_snr</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">bin_berv</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s2">&quot;The expected SNR cannot be reached since the total SNR is about : </span><span class="si">%.0f</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+                <span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The maximum value allowed : </span><span class="si">%.0f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)))</span>
+                <span class="n">bin_snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="mi">50</span>
+                <span class="n">bin_berv</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">bin_snr</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="c1"># plt.plot(np.sqrt(np.cumsum(snr_sorted**2)))</span>
+        <span class="n">snr_lim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">bin_berv</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">berv_bin</span> <span class="o">=</span> <span class="n">berv</span><span class="p">[</span><span class="n">sort</span><span class="p">][</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">snr_sorted</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">snr_lim</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">berv_bin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>  <span class="c1"># to ensure the first point to be selected</span>
+
+        <span class="n">mask_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">berv</span> <span class="o">&gt;</span> <span class="n">berv_bin</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">berv</span> <span class="o">&lt;=</span> <span class="n">berv_bin</span><span class="p">[</span><span class="mi">1</span><span class="p">:][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+        <span class="n">berv_bin</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">berv_bin</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_bin</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">berv_bin</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_bin</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">)</span>
+        <span class="n">mask_bin</span> <span class="o">=</span> <span class="n">mask_bin</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask_bin</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">snr_stacked</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_flux_norm</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_snr</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mask_bin</span><span class="p">)):</span>
+            <span class="n">all_flux_norm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">all_flux</span><span class="p">[</span><span class="n">mask_bin</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">all_conti</span><span class="p">[</span><span class="n">mask_bin</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">snr_stacked</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">snr</span><span class="p">[</span><span class="n">mask_bin</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
+            <span class="n">all_snr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snr</span><span class="p">[</span><span class="n">mask_bin</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
+        <span class="n">all_flux_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yarara_get_berv_value</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">new</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">light_graphic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">berv_bin</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">snr_stacked</span><span class="p">,</span> <span class="n">berv_bin</span><span class="p">,</span> <span class="s2">&quot;bo-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">curve</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">snr_stacked</span><span class="p">,</span> <span class="n">berv_bin</span><span class="p">)</span>
+        <span class="n">curve</span><span class="o">.</span><span class="n">myscatter</span><span class="p">(</span>
+            <span class="n">num</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">liste</span><span class="o">=</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">all_snr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_snr</span><span class="p">))],</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+            <span class="n">factor</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;SNR stacked&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;BERV [km/s]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SNR of binned spetcra around </span><span class="si">%.0f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">snr_stacked</span><span class="p">)))</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">)):</span>
+            <span class="n">all_flux_norm</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;savgol&quot;</span><span class="p">,</span> <span class="n">box_pts</span><span class="o">=</span><span class="n">smooth_box</span><span class="p">)</span>
+
+        <span class="n">mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">all_flux_norm</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_max</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">mean1</span><span class="p">)</span>
+
+        <span class="n">mean1</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">mean1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">all_flux_diff_mean</span> <span class="o">=</span> <span class="n">all_flux_backup</span> <span class="o">-</span> <span class="n">mean1</span>
+        <span class="n">all_flux_diff_med</span> <span class="o">=</span> <span class="n">all_flux_backup</span> <span class="o">-</span> <span class="n">med</span>
+        <span class="n">all_flux_diff1_mean</span> <span class="o">=</span> <span class="n">all_flux_backup</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median&quot;</span><span class="p">)</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">wavelength</span><span class="p">[</span><span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">berv</span><span class="p">)),</span>
+            <span class="n">all_flux_diff_med</span><span class="p">[</span><span class="n">sort</span><span class="p">][:,</span> <span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Max&quot;</span><span class="p">)</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">wavelength</span><span class="p">[</span><span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">berv</span><span class="p">)),</span>
+            <span class="n">all_flux_diff_mean</span><span class="p">[</span><span class="n">sort</span><span class="p">][:,</span> <span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Masked weighted mean&quot;</span><span class="p">)</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">wavelength</span><span class="p">[</span><span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">berv</span><span class="p">)),</span>
+            <span class="n">all_flux_diff1_mean</span><span class="p">[</span><span class="n">sort</span><span class="p">][:,</span> <span class="n">idx_min</span> <span class="p">:</span> <span class="n">idx_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wavelength</span>
+        <span class="n">load</span><span class="p">[</span><span class="s2">&quot;reference_spectrum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean1</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">load</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;Analyse_material.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span></div>
+
+
+<span class="c1"># =============================================================================</span>
+<span class="c1"># CUT SPECTRUM</span>
+<span class="c1"># =============================================================================</span>
+
+
+<div class="viewcode-block" id="yarara_cut_spectrum"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_cut_spectrum.html#yarara.sts.util.yarara_cut_spectrum">[docs]</a><span class="k">def</span> <span class="nf">yarara_cut_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cut the spectrum time-series borders to reach the specified wavelength limits (included)</span>
+<span class="sd">    There is no way to cancel this step ! Use it wisely.&quot;&quot;&quot;</span>
+
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : SPECTRA CROPING ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
+    <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
+
+    <span class="k">if</span> <span class="n">wave_min</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">])</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yarara_map</span><span class="p">(</span>
+            <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+            <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span>
+            <span class="n">wave_min</span><span class="o">=</span><span class="n">w0</span><span class="p">,</span>
+            <span class="n">wave_max</span><span class="o">=</span><span class="n">w0</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="n">Plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">]</span>  <span class="c1"># only kept spectra with more than 10 values below 0</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">i0</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># supress wavelength range until 99% of nan values</span>
+            <span class="k">if</span> <span class="n">i0</span><span class="p">:</span>
+                <span class="n">wave_min</span> <span class="o">=</span> <span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">][</span><span class="n">i0</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s2">&quot; [INFO] Automatic detection of the blue edge spectrum found at </span><span class="si">%.2f</span><span class="s2"> AA</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">wave_min</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wave_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wave_min</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">maps</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;CORRECTION_MAP/*.p&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">maps</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">maps</span><span class="p">:</span>
+            <span class="n">correction_map</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">old_wave</span> <span class="o">=</span> <span class="n">correction_map</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+            <span class="n">idx_min</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">wave_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">wave_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">correction_map</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+            <span class="n">correction_map</span><span class="p">[</span><span class="s2">&quot;correction_map&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">correction_map</span><span class="p">[</span><span class="s2">&quot;correction_map&quot;</span><span class="p">][:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+            <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">correction_map</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> modified&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">old_wave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">])</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wave_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">wave_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">new_wave</span> <span class="o">=</span> <span class="n">old_wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+    <span class="n">wave_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">new_wave</span><span class="p">)</span>
+    <span class="n">wave_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">new_wave</span><span class="p">)</span>
+
+    <span class="n">load</span> <span class="o">=</span> <span class="n">load</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+    <span class="n">load</span> <span class="o">=</span> <span class="n">load</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">load</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;Analyse_material.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">file_kitcat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;KITCAT/kitcat_spectrum.p&quot;</span><span class="p">)</span>
+        <span class="n">wave_kit</span> <span class="o">=</span> <span class="n">file_kitcat</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]</span>
+        <span class="n">idx_min</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wave_kit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">wave_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave_kit</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">wave_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave_kit</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;wave&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;flux&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;correction_factor&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;flux_telluric&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;flux_uncorrected&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;continuum&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">file_kitcat</span><span class="p">[</span><span class="n">kw</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">file_kitcat</span><span class="p">[</span><span class="n">kw</span><span class="p">])[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">pickle_dump</span><span class="p">(</span><span class="n">file_kitcat</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;KITCAT/kitcat_spectrum.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;RASSI*.p&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+
+    <span class="n">file_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">import_spectrum</span><span class="p">()</span>
+    <span class="n">old_wave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">file_ref</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">])</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_wave</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wave_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">wave_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">old_wave</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">new_wave</span> <span class="o">=</span> <span class="n">old_wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+    <span class="n">wave_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">new_wave</span><span class="p">)</span>
+    <span class="n">wave_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">new_wave</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;wave_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wave_min</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;wave_max&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wave_max</span>
+
+        <span class="n">anchors_wave</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">anchors_wave</span> <span class="o">&gt;=</span> <span class="n">wave_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">anchors_wave</span> <span class="o">&lt;=</span> <span class="n">wave_max</span><span class="p">)</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_index&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">idx_min</span>
+        <span class="p">)</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_flux&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_flux&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="n">anchors_wave</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">anchors_wave</span> <span class="o">&gt;=</span> <span class="n">wave_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">anchors_wave</span> <span class="o">&lt;=</span> <span class="n">wave_max</span><span class="p">)</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_index&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">idx_min</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_flux&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_flux&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span>
+        <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">][</span><span class="s2">&quot;anchor_wave&quot;</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">])</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
+                <span class="n">sub_fields</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">sfield</span> <span class="ow">in</span> <span class="n">sub_fields</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">][</span><span class="n">sfield</span><span class="p">])</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">][</span><span class="n">sfield</span><span class="p">])</span> <span class="o">==</span> <span class="n">length</span><span class="p">:</span>
+                            <span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">][</span><span class="n">sfield</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">][</span><span class="n">sfield</span><span class="p">][</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">])</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">])</span> <span class="o">==</span> <span class="n">length</span><span class="p">:</span>
+                    <span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">field</span><span class="p">][</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">save_pickle</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="yarara_poissonian_noise"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_poissonian_noise.html#yarara.sts.util.yarara_poissonian_noise">[docs]</a><span class="k">def</span> <span class="nf">yarara_poissonian_noise</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">noise_wanted</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">wave_ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat_snr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">9</span>
+<span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">noise_wanted</span><span class="p">:</span>
+        <span class="n">master</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">reference_spectrum</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">correction_factor</span><span class="p">)</span>
+        <span class="p">)</span>  <span class="c1"># used to scale the snr continuum into errors bars</span>
+        <span class="n">snrs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;WORKSPACE/Analyse_snr.p&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">flat_snr</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">wave_ref</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">current_snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">snr_computed</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">snrs</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">],</span> <span class="n">wave_ref</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">current_snr</span> <span class="o">=</span> <span class="n">snrs</span><span class="p">[</span><span class="s2">&quot;snr_curve&quot;</span><span class="p">][:,</span> <span class="n">i</span><span class="p">]</span>
+
+            <span class="n">curves</span> <span class="o">=</span> <span class="n">current_snr</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">master</span><span class="p">))[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">curves</span> <span class="o">=</span> <span class="n">snrs</span><span class="p">[</span><span class="s2">&quot;snr_curve&quot;</span><span class="p">]</span>  <span class="c1"># snr curves representing the continuum snr</span>
+
+        <span class="n">snr_wanted</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">noise_wanted</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">snr_wanted</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">curves</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">diff</span><span class="p">[</span><span class="n">diff</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># snr_to_degrate = 1/np.sqrt(diff)</span>
+
+        <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        <span class="n">noise</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">noise</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">noise_values</span> <span class="o">=</span> <span class="n">noise</span> <span class="o">*</span> <span class="n">master</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">matrix_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">wave</span><span class="p">))</span>
+        <span class="n">matrix_noise</span> <span class="o">*=</span> <span class="n">noise_values</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">matrix_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">wave</span><span class="p">)))</span>
+        <span class="n">noise_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">jdb</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material</span><span class="o">.</span><span class="n">wave</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">matrix_noise</span><span class="p">,</span> <span class="n">noise_values</span></div>
+</pre></div>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+        &copy; Copyright 2022, Michael Cretignier and Denis Rosset.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
