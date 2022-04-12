@@ -117,11 +117,6 @@
      </i>
     </label>
     <ul class="current">
-     <li class="toctree-l3">
-      <a class="reference internal" href="yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 current active has-children">
       <a class="reference internal" href="yarara.analysis.html">
        analysis
@@ -229,16 +224,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="yarara.my_rassine_tools.html">
@@ -387,11 +372,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="yarara.sts.extract.html">
          extract
         </a>
@@ -409,11 +389,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -491,6 +466,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -592,7 +572,12 @@
 <td><p>weights define as 1/sigma**2 self.table = MxT, base_vec = NxT, N the number of basis element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#yarara.analysis.table.rms_w" title="yarara.analysis.table.rms_w"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rms_w</span></code></a></p></td>
-<td><p></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
@@ -605,7 +590,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="yarara.analysis.table.rms_w">
 <span class="sig-name descname"><span class="pre">rms_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/analysis.html#table.rms_w"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.analysis.table.rms_w" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="yarara.analysis.table.WPCA">
@@ -613,12 +603,22 @@
 <dd><p>from <a class="reference external" href="https://github.com/jakevdp/wpca/blob/master/WPCA-Example.ipynb">https://github.com/jakevdp/wpca/blob/master/WPCA-Example.ipynb</a>
 enter which pca do yo want either ‘pca’, ‘wpca’ or ‘empca’
 empca slower than wpca</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="yarara.analysis.table.fit_base">
 <span class="sig-name descname"><span class="pre">fit_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_sim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/yarara/analysis.html#table.fit_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yarara.analysis.table.fit_base" title="Permalink to this definition">¶</a></dt>
 <dd><p>weights define as 1/sigma**2 self.table = MxT, base_vec = NxT, N the number of basis element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -574,10 +554,12 @@
 
 <span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">float64</span><span class="p">,</span> <span class="n">int64</span><span class="p">,</span> <span class="n">ndarray</span>
+<span class="kn">from</span> <span class="nn">pandas.core.frame</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
 
@@ -590,7 +572,7 @@
 <span class="c1"># =============================================================================</span>
 
 
-<div class="viewcode-block" id="import_rassine_output"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_rassine_output.html#yarara.sts.io.import_rassine_output">[docs]</a><span class="k">def</span> <span class="nf">import_rassine_output</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">return_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="import_rassine_output"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_rassine_output.html#yarara.sts.io.import_rassine_output">[docs]</a><span class="k">def</span> <span class="nf">import_rassine_output</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">return_name</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw1</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw2</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Import all the RASSINE dictionnaries in a list</span>
 
@@ -655,8 +637,7 @@
 <span class="c1"># IMPORT THE FULL DICO CHAIN</span>
 <span class="c1"># =============================================================================</span>
 
-<span class="c1"># io</span>
-<div class="viewcode-block" id="import_dico_tree"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_dico_tree.html#yarara.sts.io.import_dico_tree">[docs]</a><span class="k">def</span> <span class="nf">import_dico_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="import_dico_tree"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_dico_tree.html#yarara.sts.io.import_dico_tree">[docs]</a><span class="k">def</span> <span class="nf">import_dico_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">file_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">import_spectrum</span><span class="p">()</span>
     <span class="n">kw</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">file_test</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">kw_kept</span> <span class="o">=</span> <span class="p">[]</span>
@@ -684,7 +665,7 @@
 <span class="c1"># =============================================================================</span>
 
 
-<div class="viewcode-block" id="import_spectrum"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_spectrum.html#yarara.sts.io.import_spectrum">[docs]</a><span class="k">def</span> <span class="nf">import_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="import_spectrum"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.import_spectrum.html#yarara.sts.io.import_spectrum">[docs]</a><span class="k">def</span> <span class="nf">import_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">int64</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Import a pickle file of a spectrum to get fast common information shared by all spectra</span>
 
@@ -721,28 +702,28 @@
 
 <div class="viewcode-block" id="yarara_star_info"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.yarara_star_info.html#yarara.sts.io.yarara_star_info">[docs]</a><span class="k">def</span> <span class="nf">yarara_star_info</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">Rv_sys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">simbad_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">magB</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">magV</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">magR</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">BV</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">VR</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">sp_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Mstar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Rstar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Vsini</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Vmicro</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Teff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">log_g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">FeH</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Prot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Fwhm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Contrast</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">CCF_delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">Pmag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">stellar_template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">Rv_sys</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">simbad_name</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">magB</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">magV</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">magR</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">BV</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">VR</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sp_type</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Mstar</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Rstar</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Vsini</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Vmicro</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Teff</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">log_g</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">FeH</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Prot</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Fwhm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">float64</span><span class="p">]]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Contrast</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">float64</span><span class="p">]]]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">CCF_delta</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">Pmag</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">stellar_template</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="n">kw</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;Rv_sys&quot;</span><span class="p">,</span>
@@ -823,7 +804,7 @@
 <span class="c1"># =============================================================================</span>
 
 <span class="c1"># io</span>
-<div class="viewcode-block" id="yarara_analyse_summary"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.yarara_analyse_summary.html#yarara.sts.io.yarara_analyse_summary">[docs]</a><span class="k">def</span> <span class="nf">yarara_analyse_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">rm_old</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_analyse_summary"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.yarara_analyse_summary.html#yarara.sts.io.yarara_analyse_summary">[docs]</a><span class="k">def</span> <span class="nf">yarara_analyse_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">rm_old</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Produce a summary table with the RASSINE files of the specified directory</span>
 
@@ -1226,15 +1207,15 @@
 
 <div class="viewcode-block" id="yarara_obs_info"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.yarara_obs_info.html#yarara.sts.io.yarara_obs_info">[docs]</a><span class="k">def</span> <span class="nf">yarara_obs_info</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">kw</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
-    <span class="n">jdb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">berv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">rv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">airmass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">texp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">seeing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">humidity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">kw</span><span class="p">:</span> <span class="n">DataFrame</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="n">jdb</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">berv</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">rv</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">airmass</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">texp</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">seeing</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">humidity</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add some observationnal information in the RASSINE files and produce a summary table</span>
 
@@ -1299,14 +1280,14 @@
 
 <div class="viewcode-block" id="supress_time_spectra"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.io.supress_time_spectra.html#yarara.sts.io.supress_time_spectra">[docs]</a><span class="k">def</span> <span class="nf">supress_time_spectra</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">liste</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">jdb_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">jdb_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">num_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">num_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">supress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">name_ext</span><span class="o">=</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">liste</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">jdb_min</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">jdb_max</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">num_min</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">num_max</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">supress</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">name_ext</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Supress spectra according to time</span>
 

@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -574,18 +554,28 @@
 
 <span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">my_classes</span> <span class="k">as</span> <span class="n">myc</span>
-<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">my_functions</span> <span class="k">as</span> <span class="n">myf</span>
+<span class="kn">from</span> <span class="nn">..analysis</span> <span class="kn">import</span> <span class="n">table</span><span class="p">,</span> <span class="n">tableXY</span>
 <span class="kn">from</span> <span class="nn">..paths</span> <span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span> <span class="nn">..plots</span> <span class="kn">import</span> <span class="n">my_colormesh</span><span class="p">,</span> <span class="n">plot_color_box</span>
+<span class="kn">from</span> <span class="nn">..stats</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">clustering</span><span class="p">,</span>
+    <span class="n">find_nearest</span><span class="p">,</span>
+    <span class="n">flat_clustering</span><span class="p">,</span>
+    <span class="n">match_nearest</span><span class="p">,</span>
+    <span class="n">merge_borders</span><span class="p">,</span>
+    <span class="n">smooth2d</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">doppler_r</span><span class="p">,</span> <span class="n">flux_norm_std</span><span class="p">,</span> <span class="n">print_box</span><span class="p">,</span> <span class="n">sphinx</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">..my_rassine_tools</span> <span class="kn">import</span> <span class="n">spec_time_series</span>
@@ -598,15 +588,15 @@
 
 <div class="viewcode-block" id="yarara_correct_pattern"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.instrument.yarara_correct_pattern.html#yarara.sts.instrument.yarara_correct_pattern">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_pattern</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">6100</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-    <span class="n">width_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
-    <span class="n">correct_blue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">correct_red</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">jdb_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6100</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+    <span class="n">width_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="n">correct_blue</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">correct_red</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">jdb_range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -639,7 +629,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
     <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
 
-    <span class="n">myf</span><span class="o">.</span><span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CORRECTION FRINGING ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CORRECTION FRINGING ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">kw</span> <span class="o">=</span> <span class="s2">&quot;_planet&quot;</span> <span class="o">*</span> <span class="n">planet</span>
     <span class="k">if</span> <span class="n">kw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -688,8 +678,8 @@
     <span class="n">snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span>
     <span class="n">jdb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">jdb</span><span class="p">)</span>
 
-    <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">snr</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">jdb_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -724,11 +714,11 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] Pattern analysis for range mm : &quot;</span><span class="p">,</span> <span class="n">width_range</span><span class="p">)</span>
     <span class="c1"># low = np.percentile(flux-ref,2.5)</span>
     <span class="c1"># high = np.percentile(flux-ref,97.5)</span>
-    <span class="n">old_diff</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">smooth2d</span><span class="p">(</span><span class="n">flux</span> <span class="o">-</span> <span class="n">ref</span><span class="p">,</span> <span class="n">smooth_map</span><span class="p">)</span>
+    <span class="n">old_diff</span> <span class="o">=</span> <span class="n">smooth2d</span><span class="p">(</span><span class="n">flux</span> <span class="o">-</span> <span class="n">ref</span><span class="p">,</span> <span class="n">smooth_map</span><span class="p">)</span>
     <span class="n">low</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">flux</span> <span class="o">/</span> <span class="p">(</span><span class="n">ref</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">),</span> <span class="mf">2.5</span><span class="p">)</span>
     <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">flux</span> <span class="o">/</span> <span class="p">(</span><span class="n">ref</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">),</span> <span class="mf">97.5</span><span class="p">)</span>
 
-    <span class="n">diff</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">smooth2d</span><span class="p">(</span><span class="n">flux</span> <span class="o">/</span> <span class="p">(</span><span class="n">ref</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">),</span> <span class="n">smooth_map</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># changed for a ratio 21-01-20</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">smooth2d</span><span class="p">(</span><span class="n">flux</span> <span class="o">/</span> <span class="p">(</span><span class="n">ref</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">),</span> <span class="n">smooth_map</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># changed for a ratio 21-01-20</span>
     <span class="n">diff</span><span class="p">[</span><span class="n">diff</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">diff_backup</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -737,7 +727,7 @@
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">])</span>
 
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="n">diff</span><span class="p">[:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
@@ -769,8 +759,8 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">index_sphinx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">sphinx</span><span class="p">(</span><span class="s2">&quot;Which index present a clear pattern ?&quot;</span><span class="p">))</span>
-        <span class="n">index_sphinx2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">sphinx</span><span class="p">(</span><span class="s2">&quot;Which index present no pattern ?&quot;</span><span class="p">))</span>
+        <span class="n">index_sphinx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sphinx</span><span class="p">(</span><span class="s2">&quot;Which index present a clear pattern ?&quot;</span><span class="p">))</span>
+        <span class="n">index_sphinx2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sphinx</span><span class="p">(</span><span class="s2">&quot;Which index present no pattern ?&quot;</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">snr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">snr</span><span class="p">)</span>
@@ -797,7 +787,7 @@
     <span class="k">if</span> <span class="n">index_sphinx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
 
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">))):</span>
-            <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
+            <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
             <span class="n">diff_pattern</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span>
                 <span class="n">window</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">median</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">)</span>  <span class="c1"># HARDCODE PARAMETER rolling filter to remove telluric power in the fourrier space</span>
@@ -808,12 +798,12 @@
             <span class="p">)</span>
             <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_pattern</span><span class="o">.</span><span class="n">y</span>
 
-        <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">index_sphinx</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">index_sphinx</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">index_sphinx2</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">diff_flat</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">index_sphinx2</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
+            <span class="n">diff_flat</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">index_sphinx2</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">diff_flat</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
+            <span class="n">diff_flat</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
 
         <span class="n">new_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
         <span class="n">diff_pattern</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">new_grid</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -862,7 +852,7 @@
 
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)):</span>
 
-            <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
+            <span class="n">diff_pattern</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">wave</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">wave</span><span class="p">)</span>
             <span class="n">diff_pattern</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">new_grid</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">diff_pattern_backup</span> <span class="o">=</span> <span class="n">diff_pattern</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="c1"># diff_pattern.rolling(window=1000)  #HARDCODE PARAMETER rolling filter to remove telluric power in the fourrier space</span>
@@ -876,7 +866,7 @@
                 <span class="n">dstep_clust</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">])))</span>
                 <span class="k">if</span> <span class="n">dstep_clust</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">dstep_clust</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
-                <span class="n">mask</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span> <span class="n">dstep_clust</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span> <span class="n">dstep_clust</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">highest</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">mask</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
 
                 <span class="n">left</span> <span class="o">=</span> <span class="p">(</span>
@@ -900,8 +890,8 @@
                         <span class="n">emergency</span> <span class="o">=</span> <span class="mi">0</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="n">highest</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">emergency</span><span class="p">):</span>  <span class="c1"># because gap between ccd is large</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">left</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">left</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
                 <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="p">(</span>
                     <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -938,9 +928,9 @@
                     <span class="mi">0</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff_fourrier_right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
                 <span class="p">]</span>
 
-                <span class="n">maxima_left</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                <span class="n">maxima_left</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                     <span class="n">width_left</span><span class="p">[(</span><span class="n">width_left</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width_left</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
-                    <span class="n">myf</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span>
+                    <span class="n">smooth</span><span class="p">(</span>
                         <span class="n">diff_fourrier_pos_left</span><span class="p">[</span>
                             <span class="p">(</span><span class="n">width_left</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width_left</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                         <span class="p">],</span>
@@ -949,9 +939,9 @@
                 <span class="p">)</span>
                 <span class="n">maxima_left</span><span class="o">.</span><span class="n">find_max</span><span class="p">(</span><span class="n">vicinity</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
 
-                <span class="n">maxima_right</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                <span class="n">maxima_right</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                     <span class="n">width_right</span><span class="p">[(</span><span class="n">width_right</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width_right</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
-                    <span class="n">myf</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span>
+                    <span class="n">smooth</span><span class="p">(</span>
                         <span class="n">diff_fourrier_pos_right</span><span class="p">[</span>
                             <span class="p">(</span><span class="n">width_right</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width_right</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                         <span class="p">],</span>
@@ -975,7 +965,7 @@
                 <span class="n">five_maxima_right</span> <span class="o">=</span> <span class="n">five_maxima_right</span><span class="p">[</span><span class="n">five_maxima_right_y</span> <span class="o">&gt;</span> <span class="n">thresh_right</span><span class="p">]</span>
 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">five_maxima_left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">where</span><span class="p">,</span> <span class="n">freq_maximum_left</span><span class="p">,</span> <span class="n">dust</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span>
+                    <span class="n">where</span><span class="p">,</span> <span class="n">freq_maximum_left</span><span class="p">,</span> <span class="n">dust</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span>
                         <span class="n">five_maxima_left</span><span class="p">,</span> <span class="n">freq_maximum_ref</span>
                     <span class="p">)</span>
                     <span class="n">maximum_left</span> <span class="o">=</span> <span class="n">maxima_left</span><span class="o">.</span><span class="n">index_max</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">maxima_left</span><span class="o">.</span><span class="n">y_max</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
@@ -983,7 +973,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">freq_maximum_left</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">five_maxima_right</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">where</span><span class="p">,</span> <span class="n">freq_maximum_right</span><span class="p">,</span> <span class="n">dust</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span>
+                    <span class="n">where</span><span class="p">,</span> <span class="n">freq_maximum_right</span><span class="p">,</span> <span class="n">dust</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span>
                         <span class="n">five_maxima_right</span><span class="p">,</span> <span class="n">freq_maximum_ref</span>
                     <span class="p">)</span>
                     <span class="n">maximum_right</span> <span class="o">=</span> <span class="n">maxima_right</span><span class="o">.</span><span class="n">index_max</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">maxima_right</span><span class="o">.</span><span class="n">y_max</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span>
@@ -1011,7 +1001,7 @@
                     <span class="n">index_corrected_pattern_red</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timer_red</span><span class="p">)</span>
 
                     <span class="c1"># left</span>
-                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff_fourrier_pos_left</span><span class="p">)),</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span>
                             <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">diff_fourrier_pos_left</span><span class="p">)</span>
@@ -1020,13 +1010,13 @@
                         <span class="p">),</span>
                     <span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">find_max</span><span class="p">(</span><span class="n">vicinity</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
-                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum_left</span> <span class="o">+</span> <span class="n">offset_left</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum_left</span> <span class="o">+</span> <span class="n">offset_left</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
                     <span class="n">smooth</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">rm_outliers</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sigma&quot;</span><span class="p">)</span>
 
                     <span class="n">loc_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">))[</span><span class="o">~</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
-                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span>
+                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span>
                         <span class="mi">0</span>
                     <span class="p">]</span>  <span class="c1"># half size of the rolling window</span>
                     <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="n">maxi</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">])</span>
@@ -1049,7 +1039,7 @@
                     <span class="n">timer_blue</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">index_corrected_pattern_blue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timer_blue</span><span class="p">)</span>
 
-                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff_fourrier_pos_right</span><span class="p">)),</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span>
                             <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">diff_fourrier_pos_right</span><span class="p">)</span>
@@ -1058,14 +1048,14 @@
                         <span class="p">),</span>
                     <span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">find_max</span><span class="p">(</span><span class="n">vicinity</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
-                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum_right</span> <span class="o">+</span> <span class="n">offset_right</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum_right</span> <span class="o">+</span> <span class="n">offset_right</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">rm_outliers</span><span class="p">(</span>
                         <span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sigma&quot;</span>
                     <span class="p">)</span>  <span class="c1"># find peak in fourier space and width from derivative</span>
 
                     <span class="n">loc_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">))[</span><span class="o">~</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
-                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span>
+                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="n">hard_window</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span>
                         <span class="mi">0</span>
                     <span class="p">]</span>  <span class="c1"># half size of the rolling window</span>
                     <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="n">maxi</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">])</span>
@@ -1080,7 +1070,7 @@
 
                     <span class="c1"># final</span>
 
-                <span class="n">correction</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                <span class="n">correction</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                     <span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
                     <span class="n">diff_pattern_backup</span> <span class="o">-</span> <span class="n">diff_pattern</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
                     <span class="mi">0</span> <span class="o">*</span> <span class="n">diff_pattern</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
@@ -1103,7 +1093,7 @@
                     <span class="o">/</span> <span class="n">dl</span>
                 <span class="p">)</span>  <span class="c1"># transformation of the frequency in mm of the material</span>
 
-                <span class="n">maxima</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                <span class="n">maxima</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                     <span class="n">width</span><span class="p">[(</span><span class="n">width</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
                     <span class="n">diff_fourrier_pos</span><span class="p">[(</span><span class="n">width</span> <span class="o">&gt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">width</span> <span class="o">&lt;</span> <span class="n">width_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
                 <span class="p">)</span>
@@ -1124,7 +1114,7 @@
                     <span class="n">timer_blue</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="n">index_corrected_pattern_red</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timer_red</span><span class="p">)</span>
 
-                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
+                    <span class="n">smooth</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff_fourrier_pos</span><span class="p">)),</span>
                         <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span>
                             <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">diff_fourrier_pos</span><span class="p">)</span>
@@ -1133,15 +1123,13 @@
                         <span class="p">),</span>
                     <span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">find_max</span><span class="p">(</span><span class="n">vicinity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">maxi</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="n">maximum</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
                     <span class="n">smooth</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">rm_outliers</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sigma&quot;</span><span class="p">)</span>
 
                     <span class="n">loc_slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">))[</span><span class="o">~</span><span class="n">smooth</span><span class="o">.</span><span class="n">deri</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
-                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span>
-                        <span class="mi">0</span>
-                    <span class="p">]</span>  <span class="c1"># half size of the rolling window</span>
+                    <span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">loc_slope</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># half size of the rolling window</span>
                     <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="n">maxi</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">])</span>
 
                     <span class="n">closest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
@@ -1183,7 +1171,7 @@
 
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">old_diff</span><span class="p">[:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
@@ -1200,7 +1188,7 @@
         <span class="n">ax1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.375</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">diff2_backup</span><span class="p">[:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
@@ -1217,7 +1205,7 @@
         <span class="n">ax2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">wave</span><span class="p">[</span><span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">old_diff</span><span class="p">[:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">]</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">diff2_backup</span><span class="p">[:,</span> <span class="n">idx_min</span><span class="p">:</span><span class="n">idx_max</span><span class="p">],</span>
@@ -1287,7 +1275,7 @@
 
 
 <div class="viewcode-block" id="yarara_produce_mask_contam"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.instrument.yarara_produce_mask_contam.html#yarara.sts.instrument.yarara_produce_mask_contam">[docs]</a><span class="k">def</span> <span class="nf">yarara_produce_mask_contam</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="o">=</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Contam_HARPN.p&quot;</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Contam_HARPN.p&quot;</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creation of the stitching mask on the spectrum</span>
@@ -1302,7 +1290,7 @@
     <span class="k">if</span> <span class="n">kw</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- PLANET ACTIVATED ----&quot;</span><span class="p">)</span>
 
-    <span class="n">myf</span><span class="o">.</span><span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : PRODUCTION CONTAM MASK ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : PRODUCTION CONTAM MASK ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> [INFO] FROG file used : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">frog_file</span><span class="p">))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
@@ -1320,7 +1308,7 @@
     <span class="n">wave_contam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">])</span>
     <span class="n">contam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;contam&quot;</span><span class="p">])</span>
 
-    <span class="n">vec</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="n">wave_contam</span><span class="p">,</span> <span class="n">contam</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">wave_contam</span><span class="p">,</span> <span class="n">contam</span><span class="p">)</span>
     <span class="n">vec</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
     <span class="n">vec</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">load</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">]),</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 
@@ -1329,7 +1317,7 @@
 
 
 <div class="viewcode-block" id="yarara_produce_mask_frog"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.instrument.yarara_produce_mask_frog.html#yarara.sts.instrument.yarara_produce_mask_frog">[docs]</a><span class="k">def</span> <span class="nf">yarara_produce_mask_frog</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="o">=</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Ghost_HARPS03.p&quot;</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Ghost_HARPS03.p&quot;</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Correction of the stitching/ghost on the spectrum by PCA fitting</span>
@@ -1343,7 +1331,7 @@
 <span class="sd">    frog_file : files containing the wavelength of the stitching</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">myf</span><span class="o">.</span><span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : MASK GHOST/STITCHING/THAR WITH FROG ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : MASK GHOST/STITCHING/THAR WITH FROG ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span>
     <span class="n">kw</span> <span class="o">=</span> <span class="s2">&quot;_planet&quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">planet</span>
@@ -1359,15 +1347,8 @@
 
     <span class="n">berv_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;berv&quot;</span> <span class="o">+</span> <span class="n">kw</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">berv_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;berv&quot;</span> <span class="o">+</span> <span class="n">kw</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-    <span class="n">imin</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">berv</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span>
-            <span class="mi">0</span>
-        <span class="p">]</span>
-        <span class="o">+</span> <span class="mi">1</span>
-    <span class="p">)</span>
-    <span class="n">imax</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">berv</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span>
-        <span class="mi">0</span>
-    <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">imin</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">berv</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">imax</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">berv</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># extract frog table</span>
     <span class="n">frog_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">frog_file</span><span class="p">)</span>
@@ -1382,14 +1363,14 @@
                 <span class="n">wave_stitching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">])</span>
                 <span class="n">gap_stitching</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;stitching&quot;</span><span class="p">])</span>
 
-                <span class="n">vec</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="n">wave_stitching</span><span class="p">,</span> <span class="n">gap_stitching</span><span class="p">)</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">wave_stitching</span><span class="p">,</span> <span class="n">gap_stitching</span><span class="p">)</span>
                 <span class="n">vec</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
                 <span class="n">stitching</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">vec</span><span class="o">.</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 
-                <span class="n">stitching_b0</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">stitching</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">berv_file</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="c1"># all_stitch = myf.doppler_r(stitching_b0, berv*1000)[0]</span>
+                <span class="n">stitching_b0</span> <span class="o">=</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">stitching</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">berv_file</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c1"># all_stitch = doppler_r(stitching_b0, berv*1000)[0]</span>
 
-                <span class="n">match_stitching</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">match_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">stitching_b0</span><span class="p">)</span>
+                <span class="n">match_stitching</span> <span class="o">=</span> <span class="n">match_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">stitching_b0</span><span class="p">)</span>
                 <span class="n">indext</span> <span class="o">=</span> <span class="n">match_stitching</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
 
                 <span class="n">wavet_delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span>
@@ -1423,16 +1404,16 @@
                 <span class="n">wave_s2d</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">order_s2d</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contam</span><span class="p">)):</span>
-                    <span class="n">vec</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span>
-                        <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">][</span><span class="n">order</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">berv_file</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">vec</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span>
+                        <span class="n">doppler_r</span><span class="p">(</span><span class="n">frog_table</span><span class="p">[</span><span class="s2">&quot;wave&quot;</span><span class="p">][</span><span class="n">order</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">berv_file</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
                         <span class="n">contam</span><span class="p">[</span><span class="n">order</span><span class="p">],</span>
                         <span class="mi">0</span> <span class="o">*</span> <span class="n">contam</span><span class="p">[</span><span class="n">order</span><span class="p">],</span>
                     <span class="p">)</span>
                     <span class="n">vec</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
                     <span class="n">vec</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
                     <span class="n">vec</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
-                    <span class="n">begin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
-                    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">begin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
                     <span class="n">sub_grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="n">begin</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
                     <span class="n">vec</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">sub_grid</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                     <span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -1458,7 +1439,10 @@
 
 
 <div class="viewcode-block" id="yarara_correct_borders_pxl"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.instrument.yarara_correct_borders_pxl.html#yarara.sts.instrument.yarara_correct_borders_pxl">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_borders_pxl</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">pixels_to_reject</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4095</span><span class="p">],</span> <span class="n">min_shift</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">max_shift</span><span class="o">=</span><span class="mi">30</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+    <span class="n">pixels_to_reject</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4095</span><span class="p">],</span>
+    <span class="n">min_shift</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">max_shift</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Produce a brute mask to flag lines crossing pixels according to min-max shift</span>
 
@@ -1469,7 +1453,7 @@
 <span class="sd">    max_shift : max shist value in km/s</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">myf</span><span class="o">.</span><span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CREATE PIXELS BORDERS MASK ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CREATE PIXELS BORDERS MASK ----</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
     <span class="n">load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
@@ -1489,8 +1473,8 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">pxl</span><span class="p">)[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">|</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">pxl</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">pixels_rejected</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 
-    <span class="c1"># idx1, dust, dist1 = myf.find_nearest(pixels_rejected,pxl[:,0])</span>
-    <span class="c1"># idx2, dust, dist2 = myf.find_nearest(pixels_rejected,pxl[:,1])</span>
+    <span class="c1"># idx1, dust, dist1 = find_nearest(pixels_rejected,pxl[:,0])</span>
+    <span class="c1"># idx2, dust, dist2 = find_nearest(pixels_rejected,pxl[:,1])</span>
 
     <span class="c1"># dist = (dist1&lt;=1)|(dist2&lt;=1)</span>
 
@@ -1499,7 +1483,7 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">pxl</span><span class="p">)[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pxl</span><span class="p">[</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">orders</span><span class="p">[</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
 
-    <span class="n">val</span><span class="p">,</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">val</span><span class="p">,</span> <span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
     <span class="n">cluster</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="n">val</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)]</span>
 
@@ -1508,11 +1492,11 @@
     <span class="c1"># length = right-left+1</span>
 
     <span class="c1"># wave_flagged = wave[f]</span>
-    <span class="c1"># left = myf.doppler_r(wave_flagged,min_shift*1000)[0]</span>
-    <span class="c1"># right = myf.doppler_r(wave_flagged,max_shift*1000)[0]</span>
+    <span class="c1"># left = doppler_r(wave_flagged,min_shift*1000)[0]</span>
+    <span class="c1"># right = doppler_r(wave_flagged,max_shift*1000)[0]</span>
 
-    <span class="c1"># idx_left = myf.find_nearest(wave,left)[0]</span>
-    <span class="c1"># idx_right = myf.find_nearest(wave,right)[0]</span>
+    <span class="c1"># idx_left = find_nearest(wave,left)[0]</span>
+    <span class="c1"># idx_right = find_nearest(wave,right)[0]</span>
 
     <span class="n">idx_left</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">left</span>
     <span class="n">idx_right</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">right</span>
@@ -1528,22 +1512,22 @@
 
 <div class="viewcode-block" id="yarara_correct_frog"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.instrument.yarara_correct_frog.html#yarara.sts.instrument.yarara_correct_frog">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_frog</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">correction</span><span class="o">=</span><span class="s2">&quot;stitching&quot;</span><span class="p">,</span>
-    <span class="n">berv_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">3800</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">3975</span><span class="p">,</span>
-    <span class="n">wave_min_train</span><span class="o">=</span><span class="mi">3700</span><span class="p">,</span>
-    <span class="n">wave_max_train</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
-    <span class="n">complete_analysis</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-    <span class="n">equal_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">nb_pca_comp</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">pca_comp_kept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">rcorr_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">treshold_contam</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">algo_pca</span><span class="o">=</span><span class="s2">&quot;empca&quot;</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">correction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;stitching&quot;</span><span class="p">,</span>
+    <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3800</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3975</span><span class="p">,</span>
+    <span class="n">wave_min_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3700</span><span class="p">,</span>
+    <span class="n">wave_max_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
+    <span class="n">complete_analysis</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+    <span class="n">equal_weight</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">nb_pca_comp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">pca_comp_kept</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">rcorr_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">treshold_contam</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">algo_pca</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;empca&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1557,7 +1541,7 @@
 <span class="sd">    extended : extension of the cluster size</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">myf</span><span class="o">.</span><span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CORRECTION </span><span class="si">%s</span><span class="s2"> WITH FROG ----</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">correction</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
+    <span class="n">print_box</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">---- RECIPE : CORRECTION </span><span class="si">%s</span><span class="s2"> WITH FROG ----</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">correction</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
 
     <span class="n">directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
@@ -1599,7 +1583,7 @@
         <span class="n">f_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux_err&quot;</span><span class="p">]</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">sub_dico</span><span class="p">][</span><span class="s2">&quot;continuum_&quot;</span> <span class="o">+</span> <span class="n">continuum</span><span class="p">]</span>
         <span class="n">c_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;continuum_err&quot;</span><span class="p">]</span>
-        <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
+        <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
         <span class="n">all_flux</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_norm</span><span class="p">)</span>
         <span class="n">all_flux_std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_norm_std</span><span class="p">)</span>
         <span class="n">conti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -1645,8 +1629,8 @@
 
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">berv</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_flux</span><span class="p">))):</span>
-            <span class="n">test</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">all_flux_std</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-            <span class="n">test</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">berv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">all_flux_std</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">berv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">test</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">diff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">y</span>
             <span class="n">all_flux_std</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">yerr</span>
@@ -1660,7 +1644,7 @@
     <span class="n">loc_ghost</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">!=</span> <span class="mi">0</span>
 
     <span class="c1"># mask[mask&lt;treshold_contam] = 0</span>
-    <span class="n">val</span><span class="p">,</span> <span class="n">borders</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">loc_ghost</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">val</span><span class="p">,</span> <span class="n">borders</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">loc_ghost</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
     <span class="n">borders</span> <span class="o">=</span> <span class="n">borders</span><span class="p">[</span><span class="n">val</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 
@@ -1776,7 +1760,7 @@
 
     <span class="c1"># io.pickle_dump({&#39;jdb&#39;:np.array(self.table.jdb),&#39;ratio_flux&#39;:X_train,&#39;ratio_flux_std&#39;:X_train_std},open(root+&#39;/Python/datasets/telluri_cenB.p&#39;,&#39;wb&#39;))</span>
 
-    <span class="n">test2</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">test2</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
     <span class="n">test2</span><span class="o">.</span><span class="n">WPCA</span><span class="p">(</span><span class="n">algo_pca</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">X_train_std</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">comp_max</span><span class="o">=</span><span class="n">nb_pca_comp</span><span class="p">)</span>
 
     <span class="n">phase_mod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">365</span><span class="p">)[</span>
@@ -1858,11 +1842,11 @@
         <span class="n">rcorr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">([</span><span class="n">rcorr1</span><span class="p">,</span> <span class="n">rcorr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">rcorr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">rcorr</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">val</span><span class="p">,</span> <span class="n">borders</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">mask_ghost</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">val</span><span class="p">,</span> <span class="n">borders</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">(</span><span class="n">mask_ghost</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
     <span class="n">borders</span> <span class="o">=</span> <span class="n">borders</span><span class="p">[</span><span class="n">val</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)]</span>
-    <span class="n">borders</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">merge_borders</span><span class="p">(</span><span class="n">borders</span><span class="p">)</span>
-    <span class="n">flat_mask</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">flat_clustering</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="n">borders</span><span class="p">,</span> <span class="n">extended</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+    <span class="n">borders</span> <span class="o">=</span> <span class="n">merge_borders</span><span class="p">(</span><span class="n">borders</span><span class="p">)</span>
+    <span class="n">flat_mask</span> <span class="o">=</span> <span class="n">flat_clustering</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="n">borders</span><span class="p">,</span> <span class="n">extended</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
     <span class="n">rcorr_free</span> <span class="o">=</span> <span class="n">rcorr</span><span class="p">[</span><span class="o">~</span><span class="n">flat_mask</span><span class="p">]</span>
     <span class="n">rcorr_contaminated</span> <span class="o">=</span> <span class="n">rcorr</span><span class="p">[</span><span class="n">flat_mask</span><span class="p">]</span>
 
@@ -1893,7 +1877,7 @@
     <span class="n">check</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">][</span><span class="n">crit</span><span class="p">]</span>  <span class="c1"># three times more correlation than in the control group</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;|$\mathcal</span><span class="si">{R}</span><span class="s2">_</span><span class="si">{pearson}</span><span class="s2">$|&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">check</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">check</span><span class="p">)</span>
-    <span class="n">myf</span><span class="o">.</span><span class="n">plot_color_box</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">check</span><span class="p">)</span>
+    <span class="n">plot_color_box</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">check</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;IMAGES/&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_control_check.pdf&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; [INFO] </span><span class="si">%.0f</span><span class="s2"> versus </span><span class="si">%.0f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sum_a</span><span class="p">,</span> <span class="n">sum_b</span><span class="p">))</span>
@@ -1910,15 +1894,15 @@
 
     <span class="n">diff_ref</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">diff_ref</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">idx_min</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">idx_max</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">idx_min</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
 
     <span class="n">new_wave</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)]</span>
 
     <span class="k">if</span> <span class="n">complete_analysis</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">pca_comp_kept</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">new_wave</span><span class="p">,</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="n">diff</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -1929,7 +1913,7 @@
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">nb_vec</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pca_comp_kept</span><span class="p">)):</span>
             <span class="n">correction2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">jdb</span><span class="p">)))</span>
-            <span class="n">collection</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">diff_ref</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">collection</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="n">diff_ref</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
             <span class="n">base_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span> <span class="n">test2</span><span class="o">.</span><span class="n">vec</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nb_vec</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
             <span class="n">collection</span><span class="o">.</span><span class="n">fit_base</span><span class="p">(</span><span class="n">base_vec</span><span class="p">,</span> <span class="n">num_sim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">correction2</span><span class="p">[</span><span class="n">mask_ghost</span><span class="p">]</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">coeff_fitted</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">base_vec</span><span class="p">)</span>
@@ -1937,7 +1921,7 @@
             <span class="n">diff_ref2</span> <span class="o">=</span> <span class="n">diff</span> <span class="o">-</span> <span class="n">correction2</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">pca_comp_kept</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">nb_vec</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vec PCA fitted = %0.f&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nb_vec</span><span class="p">))</span>
-            <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">my_colormesh</span><span class="p">(</span>
                 <span class="n">new_wave</span><span class="p">,</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
                 <span class="n">diff_ref2</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -1953,7 +1937,7 @@
             <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new_wave</span><span class="p">,</span> <span class="n">ref</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">correction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">jdb</span><span class="p">)))</span>
-        <span class="n">collection</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">diff_ref</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="n">diff_ref</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
         <span class="n">base_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span> <span class="n">test2</span><span class="o">.</span><span class="n">vec</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">pca_comp_kept</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
         <span class="n">collection</span><span class="o">.</span><span class="n">fit_base</span><span class="p">(</span><span class="n">base_vec</span><span class="p">,</span> <span class="n">num_sim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">correction</span><span class="p">[</span><span class="n">mask_ghost</span><span class="p">]</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">coeff_fitted</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">base_vec</span><span class="p">)</span>
@@ -1962,20 +1946,20 @@
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">berv</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_flux</span><span class="p">))):</span>
-                <span class="n">test</span> <span class="o">=</span> <span class="n">myc</span><span class="o">.</span><span class="n">tableXY</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">correction</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">grid</span><span class="p">)</span>
-                <span class="n">test</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">berv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">correction</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">grid</span><span class="p">)</span>
+                <span class="n">test</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">berv</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">test</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="n">correction</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">y</span>
 
-            <span class="n">index_min_backup</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">30000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="n">index_max_backup</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">myf</span><span class="o">.</span><span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">30000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">index_min_backup</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">30000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">index_max_backup</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">doppler_r</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">30000</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">correction</span><span class="p">[:,</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">index_min_backup</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">correction</span><span class="p">[:,</span> <span class="n">index_max_backup</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">index_hole_right</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-                <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">hole_right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">hole_right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="p">)</span>  <span class="c1"># correct 1 angstrom band due to stange artefact at the border of the gap</span>
             <span class="n">index_hole_left</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-                <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">hole_left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">hole_left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="p">)</span>  <span class="c1"># correct 1 angstrom band due to stange artefact at the border of the gap</span>
             <span class="n">correction</span><span class="p">[:,</span> <span class="n">index_hole_left</span> <span class="p">:</span> <span class="n">index_hole_right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -1999,18 +1983,18 @@
                 <span class="n">max_var</span> <span class="o">=</span> <span class="n">max_var</span><span class="p">[</span><span class="n">max_var</span> <span class="o">&lt;</span> <span class="mi">4400</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">max_var</span> <span class="o">=</span> <span class="n">max_var</span><span class="p">[</span><span class="n">max_var</span> <span class="o">&lt;</span> <span class="mi">6700</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">wave_min</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">max_var</span> <span class="o">-</span> <span class="mi">15</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">wave_max</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">max_var</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">wave_min</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">max_var</span> <span class="o">-</span> <span class="mi">15</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">wave_max</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">max_var</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
-            <span class="n">idx_min</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">idx_max</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">idx_min</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">idx_max</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
 
         <span class="n">new_wave</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)]</span>
 
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">new_wave</span><span class="p">,</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_backup</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -2027,7 +2011,7 @@
         <span class="n">ax1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.375</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">new_wave</span><span class="p">,</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_ref2</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -2044,7 +2028,7 @@
         <span class="n">ax2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-        <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+        <span class="n">my_colormesh</span><span class="p">(</span>
             <span class="n">new_wave</span><span class="p">,</span>
             <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
             <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_backup</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)]</span>
@@ -2076,14 +2060,14 @@
                 <span class="n">f_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;flux_err&quot;</span><span class="p">]</span>
                 <span class="n">c</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="n">sub</span><span class="p">][</span><span class="s2">&quot;continuum_&quot;</span> <span class="o">+</span> <span class="n">continuum</span><span class="p">]</span>
                 <span class="n">c_std</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="s2">&quot;continuum_err&quot;</span><span class="p">]</span>
-                <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">myf</span><span class="o">.</span><span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
+                <span class="n">f_norm</span><span class="p">,</span> <span class="n">f_norm_std</span> <span class="o">=</span> <span class="n">flux_norm_std</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_std</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_std</span><span class="p">)</span>
                 <span class="n">diff_backup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_norm</span> <span class="o">-</span> <span class="n">ref</span><span class="p">)</span>
             <span class="n">diff_backup</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">diff_backup</span><span class="p">)</span>
 
             <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
             <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.66</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-            <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">my_colormesh</span><span class="p">(</span>
                 <span class="n">new_wave</span><span class="p">,</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
                 <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_backup</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -2100,7 +2084,7 @@
             <span class="n">ax1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
             <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.375</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-            <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">my_colormesh</span><span class="p">(</span>
                 <span class="n">new_wave</span><span class="p">,</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
                 <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_ref2</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)],</span>
@@ -2117,7 +2101,7 @@
             <span class="n">ax2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta$ flux normalised [%]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
             <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-            <span class="n">myf</span><span class="o">.</span><span class="n">my_colormesh</span><span class="p">(</span>
+            <span class="n">my_colormesh</span><span class="p">(</span>
                 <span class="n">new_wave</span><span class="p">,</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)),</span>
                 <span class="mi">100</span> <span class="o">*</span> <span class="n">diff_backup</span><span class="p">[:,</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_min</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx_max</span><span class="p">)]</span>
@@ -2142,7 +2126,7 @@
             <span class="n">to_be_saved</span><span class="p">,</span>
             <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;CORRECTION_MAP/map_matching_&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">),</span>
         <span class="p">)</span>
- 
+
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Computation of the new continua, wait ... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
         <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>

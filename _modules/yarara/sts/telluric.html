@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -575,7 +555,7 @@
 <span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -602,19 +582,19 @@
 
 <div class="viewcode-block" id="yarara_telluric"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.telluric.yarara_telluric.html#yarara.sts.telluric.yarara_telluric">[docs]</a><span class="k">def</span> <span class="nf">yarara_telluric</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">suppress_broad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">delta_window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">display_ccf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">normalisation</span><span class="o">=</span><span class="s2">&quot;slope&quot;</span><span class="p">,</span>
-    <span class="n">ccf_oversampling</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">suppress_broad</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">delta_window</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">weighted</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">display_ccf</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">ratio</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">normalisation</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;slope&quot;</span><span class="p">,</span>
+    <span class="n">ccf_oversampling</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -786,21 +766,21 @@
 <span class="c1"># telluric</span>
 <div class="viewcode-block" id="yarara_correct_telluric_proxy"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.telluric.yarara_correct_telluric_proxy.html#yarara.sts.telluric.yarara_correct_telluric_proxy">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_telluric_proxy</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
-    <span class="n">sub_dico_output</span><span class="o">=</span><span class="s2">&quot;telluric&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5700</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-    <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-    <span class="n">smooth_corr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">proxies_corr</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h2o_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;h2o_fwhm&quot;</span><span class="p">],</span>
-    <span class="n">proxies_detrending</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">wave_min_correction</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
-    <span class="n">wave_max_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">min_r_corr</span><span class="o">=</span><span class="mf">0.40</span><span class="p">,</span>
-    <span class="n">sigma_ext</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
+    <span class="n">sub_dico_output</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;telluric&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5700</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
+    <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+    <span class="n">smooth_corr</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">proxies_corr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h2o_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;h2o_fwhm&quot;</span><span class="p">],</span>
+    <span class="n">proxies_detrending</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">wave_min_correction</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
+    <span class="n">wave_max_correction</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_r_corr</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.40</span><span class="p">,</span>
+    <span class="n">sigma_ext</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Display the time-series spectra with proxies and its correlation</span>
@@ -1072,7 +1052,7 @@
         <span class="n">find_nearest</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">hole_left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="p">)</span>  <span class="c1"># correct 1 angstrom band due to stange artefact at the border of the gap</span>
     <span class="n">correction_backup</span><span class="p">[:,</span> <span class="n">index_hole_left</span> <span class="p">:</span> <span class="n">index_hole_right</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
+  
     <span class="c1">#        if positive_coeff:</span>
     <span class="c1">#            correction_backup[correction_backup&gt;0] = 0</span>
 
@@ -1202,14 +1182,14 @@
 <span class="c1"># telluric</span>
 <div class="viewcode-block" id="yarara_correct_oxygen"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.telluric.yarara_correct_oxygen.html#yarara.sts.telluric.yarara_correct_oxygen">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_oxygen</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5760</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5850</span><span class="p">,</span>
-    <span class="n">oxygene_bands</span><span class="o">=</span><span class="p">[[</span><span class="mi">5787</span><span class="p">,</span> <span class="mi">5835</span><span class="p">],</span> <span class="p">[</span><span class="mi">6275</span><span class="p">,</span> <span class="mi">6340</span><span class="p">],</span> <span class="p">[</span><span class="mi">6800</span><span class="p">,</span> <span class="mi">6950</span><span class="p">]],</span>
-<span class="p">):</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5760</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5850</span><span class="p">,</span>
+    <span class="n">oxygene_bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span><span class="o">=</span><span class="p">[[</span><span class="mi">5787</span><span class="p">,</span> <span class="mi">5835</span><span class="p">],</span> <span class="p">[</span><span class="mi">6275</span><span class="p">,</span> <span class="mi">6340</span><span class="p">],</span> <span class="p">[</span><span class="mi">6800</span><span class="p">,</span> <span class="mi">6950</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Display the time-series spectra with proxies and its correlation</span>
@@ -1517,24 +1497,24 @@
 
 <div class="viewcode-block" id="yarara_correct_telluric_gradient"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.telluric.yarara_correct_telluric_gradient.html#yarara.sts.telluric.yarara_correct_telluric_gradient">[docs]</a><span class="k">def</span> <span class="nf">yarara_correct_telluric_gradient</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico_detection</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
-    <span class="n">sub_dico_correction</span><span class="o">=</span><span class="s2">&quot;matching_oxygen&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">wave_min_train</span><span class="o">=</span><span class="mi">4200</span><span class="p">,</span>
-    <span class="n">wave_max_train</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
-    <span class="n">wave_min_correction</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
-    <span class="n">wave_max_correction</span><span class="o">=</span><span class="mi">6600</span><span class="p">,</span>
-    <span class="n">smooth_map</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-    <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-    <span class="n">inst_resolution</span><span class="o">=</span><span class="mi">110000</span><span class="p">,</span>
-    <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">equal_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">nb_pca_comp</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">nb_pca_comp_kept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">nb_pca_max_kept</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">calib_std</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">sub_dico_detection</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
+    <span class="n">sub_dico_correction</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="s2">&quot;matching_oxygen&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">wave_min_train</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">4200</span><span class="p">,</span>
+    <span class="n">wave_max_train</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">wave_min_correction</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
+    <span class="n">wave_max_correction</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">6600</span><span class="p">,</span>
+    <span class="n">smooth_map</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+    <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
+    <span class="n">inst_resolution</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">110000</span><span class="p">,</span>
+    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">equal_weight</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">nb_pca_comp</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">nb_pca_comp_kept</span><span class="p">:</span> <span class="kc">None</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">nb_pca_max_kept</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">calib_std</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Display the time-series spectra with proxies and its correlation</span>

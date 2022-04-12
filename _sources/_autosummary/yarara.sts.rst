@@ -26,12 +26,10 @@ sts
    :recursive:
 
    yarara.sts.activity
-   yarara.sts.analysis
    yarara.sts.extract
    yarara.sts.instrument
    yarara.sts.io
    yarara.sts.limbo
-   yarara.sts.management
    yarara.sts.outliers
    yarara.sts.processing
    yarara.sts.telluric

@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -576,11 +556,15 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">float64</span><span class="p">,</span> <span class="n">int64</span><span class="p">,</span> <span class="n">ndarray</span>
+<span class="kn">from</span> <span class="nn">pandas.core.frame</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">sts</span>
+<span class="kn">from</span> <span class="nn">.analysis</span> <span class="kn">import</span> <span class="n">tableXY</span>
 <span class="kn">from</span> <span class="nn">.paths</span> <span class="kn">import</span> <span class="n">root</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">VisibleDeprecationWarning</span><span class="p">)</span>
@@ -592,7 +576,7 @@
 
 
 <div class="viewcode-block" id="spec_time_series"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series">[docs]</a><span class="k">class</span> <span class="nc">spec_time_series</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<div class="viewcode-block" id="spec_time_series.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">directory</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">directory</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Yarara/&quot;</span> <span class="o">+</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;/data/s1d/HARPS03/WORKSPACE/&quot;</span>
         <span class="k">if</span> <span class="n">directory</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
@@ -766,48 +750,50 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;CORRECTION_MAP/&quot;</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;mkdir &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir_root</span> <span class="o">+</span> <span class="s2">&quot;CORRECTION_MAP/&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_rassine_output"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_rassine_output">[docs]</a>    <span class="k">def</span> <span class="nf">import_rassine_output</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">return_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">kw1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kw2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_rassine_output"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_rassine_output">[docs]</a>    <span class="k">def</span> <span class="nf">import_rassine_output</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">return_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">kw1</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">kw2</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_rassine_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_name</span><span class="p">,</span> <span class="n">kw1</span><span class="p">,</span> <span class="n">kw2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_star_info"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_star_info">[docs]</a>    <span class="k">def</span> <span class="nf">import_star_info</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_star_info"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_star_info">[docs]</a>    <span class="k">def</span> <span class="nf">import_star_info</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_star_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_table"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_table">[docs]</a>    <span class="k">def</span> <span class="nf">import_table</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_table"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_table">[docs]</a>    <span class="k">def</span> <span class="nf">import_table</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_material"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_material">[docs]</a>    <span class="k">def</span> <span class="nf">import_material</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_material"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_material">[docs]</a>    <span class="k">def</span> <span class="nf">import_material</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_material</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_dico_tree"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_dico_tree">[docs]</a>    <span class="k">def</span> <span class="nf">import_dico_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_dico_tree"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_dico_tree">[docs]</a>    <span class="k">def</span> <span class="nf">import_dico_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_dico_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.import_spectrum"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">import_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.import_spectrum"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.import_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">import_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">int64</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">import_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_star_info"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_star_info">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_star_info</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">Rv_sys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">simbad_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">magB</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">magV</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">magR</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">BV</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">VR</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">sp_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Mstar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Rstar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Vsini</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Vmicro</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Teff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">log_g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">FeH</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Prot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Fwhm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Contrast</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">CCF_delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">Pmag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">stellar_template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">Rv_sys</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">simbad_name</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">magB</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">magV</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">magR</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">BV</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">VR</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sp_type</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Mstar</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Rstar</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Vsini</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Vmicro</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Teff</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">log_g</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">FeH</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Prot</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Fwhm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">float64</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Contrast</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">float64</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">CCF_delta</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">Pmag</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">stellar_template</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">yarara_star_info</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">Rv_sys</span><span class="p">,</span>
@@ -833,79 +819,90 @@
             <span class="n">stellar_template</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_master_ccf"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_master_ccf">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_master_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span> <span class="n">name_ext</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">rvs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_master_ccf"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_master_ccf">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_master_ccf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">name_ext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">rvs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">limbo</span><span class="o">.</span><span class="n">yarara_master_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">name_ext</span><span class="p">,</span> <span class="n">rvs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_poissonian_noise"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_poissonian_noise">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_poissonian_noise</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">noise_wanted</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">wave_ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat_snr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">9</span>
-    <span class="p">):</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+        <span class="n">noise_wanted</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">wave_ref</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">flat_snr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">yarara_poissonian_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noise_wanted</span><span class="p">,</span> <span class="n">wave_ref</span><span class="p">,</span> <span class="n">flat_snr</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_obs_info"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_obs_info">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_obs_info</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">kw</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
-        <span class="n">jdb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">berv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">rv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">airmass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">texp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">seeing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">humidity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">kw</span><span class="p">:</span> <span class="n">DataFrame</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">jdb</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">berv</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">rv</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">airmass</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">texp</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">seeing</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">humidity</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">yarara_obs_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">jdb</span><span class="p">,</span> <span class="n">berv</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">airmass</span><span class="p">,</span> <span class="n">texp</span><span class="p">,</span> <span class="n">seeing</span><span class="p">,</span> <span class="n">humidity</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_get_orders"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_get_orders">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_get_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_get_orders"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_get_orders">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_get_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">extract</span><span class="o">.</span><span class="n">yarara_get_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_get_pixels"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_get_pixels">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_get_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_get_pixels"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_get_pixels">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_get_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">extract</span><span class="o">.</span><span class="n">yarara_get_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.supress_time_spectra"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.supress_time_spectra">[docs]</a>    <span class="k">def</span> <span class="nf">supress_time_spectra</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">liste</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">jdb_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">jdb_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">num_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">num_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">supress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">name_ext</span><span class="o">=</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">liste</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">jdb_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">jdb_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">supress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">name_ext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">supress_time_spectra</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">liste</span><span class="p">,</span> <span class="n">jdb_min</span><span class="p">,</span> <span class="n">jdb_max</span><span class="p">,</span> <span class="n">num_min</span><span class="p">,</span> <span class="n">num_max</span><span class="p">,</span> <span class="n">supress</span><span class="p">,</span> <span class="n">name_ext</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_analyse_summary"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_analyse_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">rm_old</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_analyse_summary"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_analyse_summary">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_analyse_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">rm_old</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">yarara_analyse_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rm_old</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_get_berv_value"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_get_berv_value">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_get_berv_value</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">time_value</span><span class="p">,</span>
-        <span class="n">Draw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">new</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">light_graphic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">time_value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">Draw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">light_graphic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">save_fig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">float64</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">extract</span><span class="o">.</span><span class="n">yarara_get_berv_value</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">time_value</span><span class="p">,</span> <span class="n">Draw</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">light_graphic</span><span class="p">,</span> <span class="n">save_fig</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_non_zero_flux"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_non_zero_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">spectrum</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_non_zero_flux"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_non_zero_flux">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_non_zero_flux</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_value</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">yarara_non_zero_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">min_value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_median_master_backup"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_median_master_backup">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_median_master_backup</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-        <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">supress_telluric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">shift_spectrum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">telluric_tresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5750</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5900</span><span class="p">,</span>
+        <span class="n">jdb_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">mask_percentile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+        <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">yarara_median_master_backup</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -923,21 +920,21 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_median_master"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_median_master">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_median_master</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
-        <span class="n">smooth_box</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-        <span class="n">bin_berv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">bin_snr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
-        <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span>
+        <span class="n">smooth_box</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="n">supress_telluric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">shift_spectrum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5750</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5900</span><span class="p">,</span>
+        <span class="n">bin_berv</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">bin_snr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">telluric_tresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">jdb_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="n">mask_percentile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+        <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">yarara_median_master</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -956,22 +953,24 @@
             <span class="n">save</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.yarara_cut_spectrum"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_cut_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="spec_time_series.yarara_cut_spectrum"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_cut_spectrum">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_cut_spectrum</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">yarara_cut_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_activity_index"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_activity_index">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_activity_index</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">calib_std</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">optimize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">substract_map</span><span class="o">=</span><span class="p">[],</span>
-        <span class="n">add_map</span><span class="o">=</span><span class="p">[],</span>
-        <span class="n">p_noise</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">calib_std</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">optimize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">substract_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">add_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">p_noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+        <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">yarara_activity_index</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -988,20 +987,20 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_telluric"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_telluric">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_telluric</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_anchors&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">suppress_broad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">delta_window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">display_ccf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">normalisation</span><span class="o">=</span><span class="s2">&quot;slope&quot;</span><span class="p">,</span>
-        <span class="n">ccf_oversampling</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_anchors&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">suppress_broad</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">delta_window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">weighted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">display_ccf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">ratio</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">normalisation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;slope&quot;</span><span class="p">,</span>
+        <span class="n">ccf_oversampling</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">telluric</span><span class="o">.</span><span class="n">yarara_telluric</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1021,40 +1020,40 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_ccf"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_ccf">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_ccf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">mask_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">ccf_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">mask_col</span><span class="o">=</span><span class="s2">&quot;weight_rv&quot;</span><span class="p">,</span>
-        <span class="n">treshold_telluric</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">display_ccf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">save_ccf_profile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">normalisation</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-        <span class="n">del_outside_max</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">bis_analysis</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">ccf_oversampling</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">rv_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">rv_borders</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">delta_window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">rv_sys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">rv_shift</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">speed_up</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">force_brute</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">squared</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">p_noise</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-        <span class="n">substract_map</span><span class="o">=</span><span class="p">[],</span>
-        <span class="n">add_map</span><span class="o">=</span><span class="p">[],</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mask_name</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ccf_name</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mask_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;weight_rv&quot;</span><span class="p">,</span>
+        <span class="n">treshold_telluric</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">ratio</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">element</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">weighted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">display_ccf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">save_ccf_profile</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">normalisation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+        <span class="n">del_outside_max</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">bis_analysis</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">ccf_oversampling</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">rv_range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">rv_borders</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">delta_window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">rv_sys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">rv_shift</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">speed_up</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">force_brute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">squared</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">p_noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+        <span class="n">substract_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">add_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">tableXY</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">yarara_ccf</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1094,27 +1093,27 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_map"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_map">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_map</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">planet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">modulo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">unit</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">4300</span><span class="p">,</span>
-        <span class="n">time_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">time_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span>
-        <span class="n">ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">berv_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">rv_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">new</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">Plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">substract_map</span><span class="o">=</span><span class="p">[],</span>
-        <span class="n">add_map</span><span class="o">=</span><span class="p">[],</span>
-        <span class="n">correction_factor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">p_noise</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">planet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">modulo</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">unit</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">4300</span><span class="p">,</span>
+        <span class="n">time_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">time_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">index</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="n">ratio</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">rv_shift</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">Plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">substract_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">add_map</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">correction_factor</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">p_noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">yarara_map</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1141,16 +1140,16 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_pattern"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_pattern">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_pattern</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">6100</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">width_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
-        <span class="n">correct_blue</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">correct_red</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">jdb_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6100</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">width_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+        <span class="n">correct_blue</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">correct_red</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">jdb_range</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">yarara_correct_pattern</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1166,44 +1165,44 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_smooth"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_smooth">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_smooth</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">4200</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">4300</span><span class="p">,</span>
-        <span class="n">window_ang</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4200</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4300</span><span class="p">,</span>
+        <span class="n">window_ang</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">outliers</span><span class="o">.</span><span class="n">yarara_correct_smooth</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">reference</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">,</span> <span class="n">window_ang</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_retropropagation_correction"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_retropropagation_correction">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_retropropagation_correction</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">correction_map</span><span class="o">=</span><span class="s2">&quot;matching_smooth&quot;</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_cosmics&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">correction_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_smooth&quot;</span><span class="p">,</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_cosmics&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">yarara_retropropagation_correction</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">correction_map</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">continuum</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_telluric_proxy"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_proxy">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_telluric_proxy</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
-        <span class="n">sub_dico_output</span><span class="o">=</span><span class="s2">&quot;telluric&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">5700</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-        <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-        <span class="n">smooth_corr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">proxies_corr</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;h2o_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;h2o_fwhm&quot;</span><span class="p">],</span>
-        <span class="n">proxies_detrending</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">wave_min_correction</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
-        <span class="n">wave_max_correction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">min_r_corr</span><span class="o">=</span><span class="mf">0.40</span><span class="p">,</span>
-        <span class="n">sigma_ext</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
+        <span class="n">sub_dico_output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;telluric&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5700</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5900</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+        <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+        <span class="n">smooth_corr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">proxies_corr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;h2o_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;h2o_fwhm&quot;</span><span class="p">],</span>
+        <span class="n">proxies_detrending</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">wave_min_correction</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4400</span><span class="p">,</span>
+        <span class="n">wave_max_correction</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">min_r_corr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.40</span><span class="p">,</span>
+        <span class="n">sigma_ext</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">telluric</span><span class="o">.</span><span class="n">yarara_correct_telluric_proxy</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1224,38 +1223,38 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_oxygen"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_oxygen">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_oxygen</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">5760</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">5850</span><span class="p">,</span>
-        <span class="n">oxygene_bands</span><span class="o">=</span><span class="p">[[</span><span class="mi">5787</span><span class="p">,</span> <span class="mi">5835</span><span class="p">],</span> <span class="p">[</span><span class="mi">6275</span><span class="p">,</span> <span class="mi">6340</span><span class="p">],</span> <span class="p">[</span><span class="mi">6800</span><span class="p">,</span> <span class="mi">6950</span><span class="p">]],</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5760</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5850</span><span class="p">,</span>
+        <span class="n">oxygene_bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5787</span><span class="p">,</span> <span class="mi">5835</span><span class="p">],</span> <span class="p">[</span><span class="mi">6275</span><span class="p">,</span> <span class="mi">6340</span><span class="p">],</span> <span class="p">[</span><span class="mi">6800</span><span class="p">,</span> <span class="mi">6950</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">telluric</span><span class="o">.</span><span class="n">yarara_correct_oxygen</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">berv_shift</span><span class="p">,</span> <span class="n">reference</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">,</span> <span class="n">oxygene_bands</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_telluric_gradient"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_telluric_gradient">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_telluric_gradient</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico_detection</span><span class="o">=</span><span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
-        <span class="n">sub_dico_correction</span><span class="o">=</span><span class="s2">&quot;matching_oxygen&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">wave_min_train</span><span class="o">=</span><span class="mi">4200</span><span class="p">,</span>
-        <span class="n">wave_max_train</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
-        <span class="n">wave_min_correction</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
-        <span class="n">wave_max_correction</span><span class="o">=</span><span class="mi">6600</span><span class="p">,</span>
-        <span class="n">smooth_map</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">berv_shift</span><span class="o">=</span><span class="s2">&quot;berv&quot;</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;master&quot;</span><span class="p">,</span>
-        <span class="n">inst_resolution</span><span class="o">=</span><span class="mi">110000</span><span class="p">,</span>
-        <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">equal_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">nb_pca_comp</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-        <span class="n">nb_pca_comp_kept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">nb_pca_max_kept</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">calib_std</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico_detection</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_fourier&quot;</span><span class="p">,</span>
+        <span class="n">sub_dico_correction</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;matching_oxygen&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">wave_min_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4200</span><span class="p">,</span>
+        <span class="n">wave_max_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="n">wave_min_correction</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4400</span><span class="p">,</span>
+        <span class="n">wave_max_correction</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6600</span><span class="p">,</span>
+        <span class="n">smooth_map</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;berv&quot;</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span>
+        <span class="n">inst_resolution</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">110000</span><span class="p">,</span>
+        <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">equal_weight</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">nb_pca_comp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">nb_pca_comp_kept</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">nb_pca_max_kept</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">calib_std</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">telluric</span><span class="o">.</span><span class="n">yarara_correct_telluric_gradient</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico_detection</span><span class="p">,</span>
@@ -1279,15 +1278,15 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_activity"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_activity">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_activity</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">3900</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">4400</span><span class="p">,</span>
-        <span class="n">smooth_corr</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">rv_shift</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
-        <span class="n">proxy_corr</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CaII&quot;</span><span class="p">],</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_telluric&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3900</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4400</span><span class="p">,</span>
+        <span class="n">smooth_corr</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">rv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="n">proxy_corr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CaII&quot;</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">activity</span><span class="o">.</span><span class="n">yarara_correct_activity</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
             <span class="n">sub_dico</span><span class="p">,</span>
@@ -1302,56 +1301,56 @@
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_cosmics"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_cosmics">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_cosmics</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">k_sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">bypass_warning</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">k_sigma</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">bypass_warning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">outliers</span><span class="o">.</span><span class="n">yarara_correct_cosmics</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">k_sigma</span><span class="p">,</span> <span class="n">bypass_warning</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_mad"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_mad">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_mad</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">k_sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">k_mad</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">n_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">k_sigma</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">k_mad</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">n_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">ext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">outliers</span><span class="o">.</span><span class="n">yarara_correct_mad</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">sub_dico</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">k_sigma</span><span class="p">,</span> <span class="n">k_mad</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">,</span> <span class="n">ext</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_produce_mask_contam"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_contam">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_produce_mask_contam</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="o">=</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Contam_HARPN.p&quot;</span>
-    <span class="p">):</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Contam_HARPN.p&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">yarara_produce_mask_contam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_produce_mask_frog"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_produce_mask_frog">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_produce_mask_frog</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="o">=</span><span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Ghost_HARPS03.p&quot;</span>
-    <span class="p">):</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;/Python/Material/Ghost_HARPS03.p&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">yarara_produce_mask_frog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frog_file</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_frog"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_frog">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_frog</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">correction</span><span class="o">=</span><span class="s2">&quot;stitching&quot;</span><span class="p">,</span>
-        <span class="n">berv_shift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">wave_min</span><span class="o">=</span><span class="mi">3800</span><span class="p">,</span>
-        <span class="n">wave_max</span><span class="o">=</span><span class="mi">3975</span><span class="p">,</span>
-        <span class="n">wave_min_train</span><span class="o">=</span><span class="mi">3700</span><span class="p">,</span>
-        <span class="n">wave_max_train</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
-        <span class="n">complete_analysis</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">equal_weight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">nb_pca_comp</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">pca_comp_kept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">rcorr_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">treshold_contam</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">algo_pca</span><span class="o">=</span><span class="s2">&quot;empca&quot;</span><span class="p">,</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">correction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;stitching&quot;</span><span class="p">,</span>
+        <span class="n">berv_shift</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3800</span><span class="p">,</span>
+        <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3975</span><span class="p">,</span>
+        <span class="n">wave_min_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3700</span><span class="p">,</span>
+        <span class="n">wave_max_train</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span>
+        <span class="n">complete_analysis</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">equal_weight</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">nb_pca_comp</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">pca_comp_kept</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">rcorr_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">treshold_contam</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">algo_pca</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;empca&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">yarara_correct_frog</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -1366,24 +1365,27 @@
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_borders_pxl"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_borders_pxl">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_borders_pxl</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">pixels_to_reject</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4095</span><span class="p">],</span> <span class="n">min_shift</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">max_shift</span><span class="o">=</span><span class="mi">30</span>
-    <span class="p">):</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+        <span class="n">pixels_to_reject</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4095</span><span class="p">],</span>
+        <span class="n">min_shift</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span>
+        <span class="n">max_shift</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">instrument</span><span class="o">.</span><span class="n">yarara_correct_borders_pxl</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">pixels_to_reject</span><span class="p">,</span> <span class="n">min_shift</span><span class="p">,</span> <span class="n">max_shift</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="spec_time_series.yarara_correct_brute"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.yarara_correct_brute">[docs]</a>    <span class="k">def</span> <span class="nf">yarara_correct_brute</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-        <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_mad&quot;</span><span class="p">,</span>
-        <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">,</span>
-        <span class="n">win_roll</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-        <span class="n">min_length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">percent_removed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">k_sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">extended</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">ghost2</span><span class="o">=</span><span class="s2">&quot;HARPS03&quot;</span><span class="p">,</span>
-        <span class="n">borders_pxl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">sub_dico</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;matching_mad&quot;</span><span class="p">,</span>
+        <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">reference</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;median&quot;</span><span class="p">,</span>
+        <span class="n">win_roll</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="n">min_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">percent_removed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">k_sigma</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">extended</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">ghost2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="s2">&quot;HARPS03&quot;</span><span class="p">,</span>
+        <span class="n">borders_pxl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">outliers</span><span class="o">.</span><span class="n">yarara_correct_brute</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -1399,7 +1401,12 @@
             <span class="n">borders_pxl</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="spec_time_series.uncorrect_hole"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.uncorrect_hole">[docs]</a>    <span class="k">def</span> <span class="nf">uncorrect_hole</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">conti</span><span class="p">,</span> <span class="n">conti_ref</span><span class="p">,</span> <span class="n">values_forbidden</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]):</span>
+<div class="viewcode-block" id="spec_time_series.uncorrect_hole"><a class="viewcode-back" href="../../_autosummary/yarara.my_rassine_tools.spec_time_series.html#yarara.my_rassine_tools.spec_time_series.uncorrect_hole">[docs]</a>    <span class="k">def</span> <span class="nf">uncorrect_hole</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+        <span class="n">conti</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">conti_ref</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">values_forbidden</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">sts</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">uncorrect_hole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conti</span><span class="p">,</span> <span class="n">conti_ref</span><span class="p">,</span> <span class="n">values_forbidden</span><span class="p">)</span></div></div>
 </pre></div>
 

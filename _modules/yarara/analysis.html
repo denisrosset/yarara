@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -573,11 +553,16 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This modules does XXX</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">lmfit</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Parameters</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">float64</span><span class="p">,</span> <span class="n">ndarray</span>
+<span class="kn">from</span> <span class="nn">pandas.core.series</span> <span class="kn">import</span> <span class="n">Series</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
 <span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">DescrStatsW</span>
 <span class="kn">from</span> <span class="nn">wpca</span> <span class="kn">import</span> <span class="n">EMPCA</span>
@@ -593,11 +578,11 @@
 <div class="viewcode-block" id="table"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table">[docs]</a><span class="k">class</span> <span class="nc">table</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;this classe has been establish with pandas DataFrame&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="table.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">):</span>
+<div class="viewcode-block" id="table.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">array</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">array</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="table.rms_w"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.rms_w">[docs]</a>    <span class="k">def</span> <span class="nf">rms_w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="table.rms_w"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.rms_w">[docs]</a>    <span class="k">def</span> <span class="nf">rms_w</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -607,8 +592,15 @@
 
         <span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">((</span><span class="n">data_recentered</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="table.WPCA"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.WPCA">[docs]</a>    <span class="k">def</span> <span class="nf">WPCA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pca</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comp_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;inter&quot;</span><span class="p">):</span>
+ 
+<div class="viewcode-block" id="table.WPCA"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.WPCA">[docs]</a>    <span class="k">def</span> <span class="nf">WPCA</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">pca</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">comp_max</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">m</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;inter&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;from https://github.com/jakevdp/wpca/blob/master/WPCA-Example.ipynb</span>
 <span class="sd">        enter which pca do yo want either &#39;pca&#39;, &#39;wpca&#39; or &#39;empca&#39;</span>
 <span class="sd">        empca slower than wpca</span>
@@ -663,7 +655,9 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">wpca_model</span> <span class="o">=</span> <span class="n">pca</span></div>
 
-<div class="viewcode-block" id="table.fit_base"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.fit_base">[docs]</a>    <span class="k">def</span> <span class="nf">fit_base</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_vec</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_sim</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="table.fit_base"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.table.html#yarara.analysis.table.fit_base">[docs]</a>    <span class="k">def</span> <span class="nf">fit_base</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">base_vec</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">num_sim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;weights define as 1/sigma**2 self.table = MxT, base_vec = NxT, N the number of basis element&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">base_vec</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
@@ -753,13 +747,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">phi_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">coeff_pos</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">coeff_pos</span><span class="p">)</span></div></div>
 
 
-<span class="c1"># -&gt; analysis</span>
 <div class="viewcode-block" id="tableXY"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY">[docs]</a><span class="k">class</span> <span class="nc">tableXY</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Describes a scatter plot (x, y)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="tableXY.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">yerr</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.__init__"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Series</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">],</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Series</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">float64</span><span class="p">],</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">float64</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]],</span>
+        <span class="o">*</span><span class="n">yerr</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># vector of y</span>
 
@@ -794,7 +792,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="tableXY.rms_w"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rms_w">[docs]</a>    <span class="k">def</span> <span class="nf">rms_w</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.rms_w"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rms_w">[docs]</a>    <span class="k">def</span> <span class="nf">rms_w</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rms</span> <span class="o">=</span> <span class="n">DescrStatsW</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">std</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">weighted_average</span> <span class="o">=</span> <span class="n">DescrStatsW</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span>
@@ -803,7 +801,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">rms</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">weighted_average</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.copy"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.copy"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tableXY</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">tableXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="tableXY.switch"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.switch">[docs]</a>    <span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -814,7 +812,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="tableXY.order"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.order">[docs]</a>    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.order"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.order">[docs]</a>    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">order_liste</span> <span class="o">=</span> <span class="n">order</span>
@@ -823,10 +821,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">order</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.null"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.null">[docs]</a>    <span class="k">def</span> <span class="nf">null</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.null"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.null">[docs]</a>    <span class="k">def</span> <span class="nf">null</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span></div>
 
-<div class="viewcode-block" id="tableXY.clip"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.clip">[docs]</a>    <span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="nb">max</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">invers</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.clip"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.clip">[docs]</a>    <span class="k">def</span> <span class="nf">clip</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">min</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="nb">max</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">invers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;This function seems sometimes to not work without any reason WARNING&quot;&quot;&quot;</span>
         <span class="n">min2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">max2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -860,7 +864,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">clipyerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clipxerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.supress_nan"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.supress_nan">[docs]</a>    <span class="k">def</span> <span class="nf">supress_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.supress_nan"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.supress_nan">[docs]</a>    <span class="k">def</span> <span class="nf">supress_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="o">~</span><span class="n">mask</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">replace_nan</span><span class="p">()</span>
@@ -871,19 +875,21 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.replace_nan"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.replace_nan">[docs]</a>    <span class="k">def</span> <span class="nf">replace_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.replace_nan"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.replace_nan">[docs]</a>    <span class="k">def</span> <span class="nf">replace_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="tableXY.supress_mask"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.supress_mask">[docs]</a>    <span class="k">def</span> <span class="nf">supress_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.supress_mask"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.supress_mask">[docs]</a>    <span class="k">def</span> <span class="nf">supress_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.center_symmetrise"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.center_symmetrise">[docs]</a>    <span class="k">def</span> <span class="nf">center_symmetrise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">Plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.center_symmetrise"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.center_symmetrise">[docs]</a>    <span class="k">def</span> <span class="nf">center_symmetrise</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">Plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
         <span class="n">kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">center</span><span class="p">,</span> <span class="n">center</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
@@ -910,27 +916,27 @@
 
 <div class="viewcode-block" id="tableXY.plot"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">Show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">capsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span>
-        <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-        <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">species</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">modulo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">modulo_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
-        <span class="n">new</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">phase_mod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">periodic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">yerr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">Show</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">ls</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">mask</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">capsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span>
+        <span class="n">markersize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">zorder</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">species</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">modulo</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">modulo_norm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
+        <span class="n">new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">phase_mod</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">periodic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">frac</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">yerr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="sd">&quot;&quot;&quot;For the mask give either the first and last index in a list [a,b] or the mask boolean&quot;&quot;&quot;</span>
 
@@ -1049,20 +1055,20 @@
             <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="tableXY.find_max"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.find_max">[docs]</a>    <span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vicinity</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.find_max"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.find_max">[docs]</a>    <span class="k">def</span> <span class="nf">find_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vicinity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_max</span> <span class="o">=</span> <span class="n">local_max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">vicinity</span><span class="o">=</span><span class="n">vicinity</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_max</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index_max</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_extremum</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_max</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="tableXY.find_min"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.find_min">[docs]</a>    <span class="k">def</span> <span class="nf">find_min</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vicinity</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.find_min"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.find_min">[docs]</a>    <span class="k">def</span> <span class="nf">find_min</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vicinity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span> <span class="o">=</span> <span class="n">local_max</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">vicinity</span><span class="o">=</span><span class="n">vicinity</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_min</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index_min</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_extremum</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="tableXY.smooth"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.smooth">[docs]</a>    <span class="k">def</span> <span class="nf">smooth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">box_pts</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;rectangular&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.smooth"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.smooth">[docs]</a>    <span class="k">def</span> <span class="nf">smooth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">box_pts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rectangular&quot;</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_smoothed</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">box_pts</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">smoothed</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_smoothed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">)</span>
@@ -1074,7 +1080,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">yerr_backup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_smoothed</span></div>
 
-<div class="viewcode-block" id="tableXY.diff"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.diff"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
         <span class="n">new</span> <span class="o">=</span> <span class="n">tableXY</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
         <span class="n">new</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">new_grid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1085,7 +1091,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">y_backup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">y</span></div>
 
-<div class="viewcode-block" id="tableXY.substract_polyfit"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.substract_polyfit">[docs]</a>    <span class="k">def</span> <span class="nf">substract_polyfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">Draw</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.substract_polyfit"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.substract_polyfit">[docs]</a>    <span class="k">def</span> <span class="nf">substract_polyfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">Draw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">replace_nan</span><span class="p">()</span>
 
@@ -1118,7 +1124,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">poly_curve</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span></div>
 
-<div class="viewcode-block" id="tableXY.rolling"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rolling">[docs]</a>    <span class="k">def</span> <span class="nf">rolling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">quantile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">median</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">iq</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.rolling"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rolling">[docs]</a>    <span class="k">def</span> <span class="nf">rolling</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">quantile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">median</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">iq</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">median</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">roll_median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span>
                 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>
@@ -1136,7 +1144,7 @@
                 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="tableXY.fit_poly"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_poly">[docs]</a>    <span class="k">def</span> <span class="nf">fit_poly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Draw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.fit_poly"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_poly">[docs]</a>    <span class="k">def</span> <span class="nf">fit_poly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Draw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1162,7 +1170,15 @@
             <span class="c1"># uncertainty = np.sqrt(np.sum([(err[j]*new_x**j)**2 for j in range(len(err))],axis=0))</span>
             <span class="c1"># plt.fill_between(new_x,np.polyval(coeff, new_x)-uncertainty/2,np.polyval(coeff, new_x)+uncertainty/2,alpha=0.4,color=color)</span>
 
-<div class="viewcode-block" id="tableXY.fit_sinus"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_sinus">[docs]</a>    <span class="k">def</span> <span class="nf">fit_sinus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Draw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">p_max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.fit_sinus"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_sinus">[docs]</a>    <span class="k">def</span> <span class="nf">fit_sinus</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">Draw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">d</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">guess</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="n">p_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="n">report</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">gmodel</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">sinus</span><span class="p">)</span>
         <span class="n">fit_params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">()</span>
         <span class="n">fit_params</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;amp&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">guess</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1193,7 +1209,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">lmfit</span> <span class="o">=</span> <span class="n">result2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">result2</span><span class="o">.</span><span class="n">params</span></div>
 
-<div class="viewcode-block" id="tableXY.rm_outliers"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rm_outliers">[docs]</a>    <span class="k">def</span> <span class="nf">rm_outliers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">who</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;inter&quot;</span><span class="p">,</span> <span class="n">bin_length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.rm_outliers"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.rm_outliers">[docs]</a>    <span class="k">def</span> <span class="nf">rm_outliers</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">who</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span>
+        <span class="n">m</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;inter&quot;</span><span class="p">,</span>
+        <span class="n">bin_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">bin_length</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">night_stack</span><span class="p">(</span><span class="n">bin_length</span><span class="o">=</span><span class="n">bin_length</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1231,7 +1254,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tableXY.fit_gaussian"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_gaussian">[docs]</a>    <span class="k">def</span> <span class="nf">fit_gaussian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">free_offset</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="tableXY.fit_gaussian"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.fit_gaussian">[docs]</a>    <span class="k">def</span> <span class="nf">fit_gaussian</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">guess</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">free_offset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;guess = [amp,cen,width,offset]&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">guess</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">guess</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -1253,13 +1278,13 @@
 
 <div class="viewcode-block" id="tableXY.interpolate"><a class="viewcode-back" href="../../_autosummary/yarara.analysis.tableXY.html#yarara.analysis.tableXY.interpolate">[docs]</a>    <span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">new_grid</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span>
-        <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">interpolate_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">,</span>
-        <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;lin&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">new_grid</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cubic&quot;</span><span class="p">,</span>
+        <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">interpolate_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">fill_value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;extrapolate&quot;</span><span class="p">,</span>
+        <span class="n">scale</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;lin&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="k">if</span> <span class="n">scale</span> <span class="o">!=</span> <span class="s2">&quot;lin&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>

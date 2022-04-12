@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -576,6 +556,7 @@
 
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">float64</span><span class="p">,</span> <span class="n">ndarray</span>
 
 <span class="kn">from</span> <span class="nn">..analysis</span> <span class="kn">import</span> <span class="n">tableXY</span>
 <span class="kn">from</span> <span class="nn">..util</span> <span class="kn">import</span> <span class="n">map_rnr</span>
@@ -591,12 +572,12 @@
 
 <div class="viewcode-block" id="yarara_get_berv_value"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.extract.yarara_get_berv_value.html#yarara.sts.extract.yarara_get_berv_value">[docs]</a><span class="k">def</span> <span class="nf">yarara_get_berv_value</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">time_value</span><span class="p">,</span>
-    <span class="n">Draw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">new</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">light_graphic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">save_fig</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">time_value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">Draw</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">light_graphic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">float64</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Return the berv value for a given jdb date&quot;&quot;&quot;</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
@@ -638,7 +619,7 @@
     <span class="k">return</span> <span class="n">berv_value</span></div>
 
 
-<div class="viewcode-block" id="yarara_get_orders"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.extract.yarara_get_orders.html#yarara.sts.extract.yarara_get_orders">[docs]</a><span class="k">def</span> <span class="nf">yarara_get_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_get_orders"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.extract.yarara_get_orders.html#yarara.sts.extract.yarara_get_orders">[docs]</a><span class="k">def</span> <span class="nf">yarara_get_orders</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
     <span class="n">mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
     <span class="n">orders</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mat</span><span class="p">[</span><span class="s2">&quot;orders_rnr&quot;</span><span class="p">])</span>
@@ -649,7 +630,7 @@
 
 
 <span class="c1"># extract</span>
-<div class="viewcode-block" id="yarara_get_pixels"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.extract.yarara_get_pixels.html#yarara.sts.extract.yarara_get_pixels">[docs]</a><span class="k">def</span> <span class="nf">yarara_get_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_get_pixels"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.extract.yarara_get_pixels.html#yarara.sts.extract.yarara_get_pixels">[docs]</a><span class="k">def</span> <span class="nf">yarara_get_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
     <span class="n">mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material</span>
     <span class="n">pixels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mat</span><span class="p">[</span><span class="s2">&quot;pixels_rnr&quot;</span><span class="p">])</span>

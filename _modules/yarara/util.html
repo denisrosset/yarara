@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -573,13 +553,31 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This modules does XXX</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="n">ndarray</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 
-<div class="viewcode-block" id="print_iter"><a class="viewcode-back" href="../../_autosummary/yarara.util.print_iter.html#yarara.util.print_iter">[docs]</a><span class="k">def</span> <span class="nf">print_iter</span><span class="p">(</span><span class="n">verbose</span><span class="p">):</span>
+<div class="viewcode-block" id="sphinx"><a class="viewcode-back" href="../../_autosummary/yarara.util.sphinx.html#yarara.util.sphinx">[docs]</a><span class="k">def</span> <span class="nf">sphinx</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">rep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;-99.9&quot;</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot; ______________ </span><span class="se">\n\n</span><span class="s2"> --- SPHINX --- </span><span class="se">\n\n</span><span class="s2"> TTTTTTTTTTTTTT </span><span class="se">\n\n</span><span class="s2"> Question : &quot;</span>
+        <span class="o">+</span> <span class="n">sentence</span>
+        <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> [Deafening silence ...] </span><span class="se">\n\n</span><span class="s2"> ______________ </span><span class="se">\n\n</span><span class="s2"> --- OEDIPE --- </span><span class="se">\n\n</span><span class="s2"> XXXXXXXXXXXXXX </span><span class="se">\n</span><span class="s2"> &quot;</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">rep</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">answer</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rep</span><span class="p">:</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Answer : &quot;</span> <span class="o">+</span> <span class="n">s2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Answer : &quot;</span> <span class="o">+</span> <span class="n">s2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span></div>
+
+
+<div class="viewcode-block" id="print_iter"><a class="viewcode-back" href="../../_autosummary/yarara.util.print_iter.html#yarara.util.print_iter">[docs]</a><span class="k">def</span> <span class="nf">print_iter</span><span class="p">(</span><span class="n">verbose</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
             <span class="n">Fore</span><span class="o">.</span><span class="n">BLUE</span>
@@ -622,13 +620,15 @@
         <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="yarara_artefact_suppressed"><a class="viewcode-back" href="../../_autosummary/yarara.util.yarara_artefact_suppressed.html#yarara.util.yarara_artefact_suppressed">[docs]</a><span class="k">def</span> <span class="nf">yarara_artefact_suppressed</span><span class="p">(</span><span class="n">old_continuum</span><span class="p">,</span> <span class="n">new_continuum</span><span class="p">,</span> <span class="n">larger_than</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lower_than</span><span class="o">=-</span><span class="mi">50</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_artefact_suppressed"><a class="viewcode-back" href="../../_autosummary/yarara.util.yarara_artefact_suppressed.html#yarara.util.yarara_artefact_suppressed">[docs]</a><span class="k">def</span> <span class="nf">yarara_artefact_suppressed</span><span class="p">(</span>
+    <span class="n">old_continuum</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">new_continuum</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">larger_than</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">lower_than</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
     <span class="n">ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_continuum</span> <span class="o">/</span> <span class="n">old_continuum</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">ratio</span> <span class="o">&gt;</span> <span class="n">larger_than</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">ratio</span> <span class="o">&lt;</span> <span class="n">lower_than</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mask</span></div>
 
 
-<div class="viewcode-block" id="get_phase"><a class="viewcode-back" href="../../_autosummary/yarara.util.get_phase.html#yarara.util.get_phase">[docs]</a><span class="k">def</span> <span class="nf">get_phase</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+<div class="viewcode-block" id="get_phase"><a class="viewcode-back" href="../../_autosummary/yarara.util.get_phase.html#yarara.util.get_phase">[docs]</a><span class="k">def</span> <span class="nf">get_phase</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="n">new_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">((</span><span class="n">array</span> <span class="o">%</span> <span class="n">period</span><span class="p">))</span>
     <span class="n">j0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">new_array</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">period</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">new_array</span><span class="p">))</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">new_array</span><span class="p">)</span>
@@ -654,7 +654,7 @@
 
 
 <span class="c1"># util</span>
-<div class="viewcode-block" id="map_rnr"><a class="viewcode-back" href="../../_autosummary/yarara.util.map_rnr.html#yarara.util.map_rnr">[docs]</a><span class="k">def</span> <span class="nf">map_rnr</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">val_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="map_rnr"><a class="viewcode-back" href="../../_autosummary/yarara.util.map_rnr.html#yarara.util.map_rnr">[docs]</a><span class="k">def</span> <span class="nf">map_rnr</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">val_max</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;val_max must be strictly larger than all number in the array, n smaller than 10&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">array</span><span class="p">])</span>
@@ -698,8 +698,9 @@
         <span class="k">return</span> <span class="n">decoded</span></div>
 
 
-<span class="c1"># util</span>
-<div class="viewcode-block" id="flux_norm_std"><a class="viewcode-back" href="../../_autosummary/yarara.util.flux_norm_std.html#yarara.util.flux_norm_std">[docs]</a><span class="k">def</span> <span class="nf">flux_norm_std</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">flux_std</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">continuum_std</span><span class="p">):</span>
+<div class="viewcode-block" id="flux_norm_std"><a class="viewcode-back" href="../../_autosummary/yarara.util.flux_norm_std.html#yarara.util.flux_norm_std">[docs]</a><span class="k">def</span> <span class="nf">flux_norm_std</span><span class="p">(</span>
+    <span class="n">flux</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">flux_std</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">continuum</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">continuum_std</span><span class="p">:</span> <span class="n">ndarray</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
     <span class="n">flux_norm</span> <span class="o">=</span> <span class="n">flux</span> <span class="o">/</span> <span class="n">continuum</span>
     <span class="n">flux_norm_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
         <span class="p">(</span><span class="n">flux_std</span> <span class="o">/</span> <span class="n">continuum</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">flux</span> <span class="o">*</span> <span class="n">continuum_std</span> <span class="o">/</span> <span class="n">continuum</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
@@ -711,8 +712,15 @@
     <span class="k">return</span> <span class="n">flux_norm</span><span class="p">,</span> <span class="n">flux_norm_std</span></div>
 
 
-<span class="c1"># util</span>
-<div class="viewcode-block" id="ccf"><a class="viewcode-back" href="../../_autosummary/yarara.util.ccf.html#yarara.util.ccf">[docs]</a><span class="k">def</span> <span class="nf">ccf</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">spec1</span><span class="p">,</span> <span class="n">spec2</span><span class="p">,</span> <span class="n">extended</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">rv_range</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">oversampling</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">spec1_std</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ccf"><a class="viewcode-back" href="../../_autosummary/yarara.util.ccf.html#yarara.util.ccf">[docs]</a><span class="k">def</span> <span class="nf">ccf</span><span class="p">(</span>
+    <span class="n">wave</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">spec1</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">spec2</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">extended</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">,</span>
+    <span class="n">rv_range</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span>
+    <span class="n">oversampling</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">spec1_std</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
     <span class="s2">&quot;CCF for a equidistant grid in log wavelength spec1 = spectrum, spec2 =  binary mask&quot;</span>
     <span class="n">dwave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">wave</span><span class="p">))</span>
 
@@ -768,7 +776,6 @@
     <span class="p">)</span></div>
 
 
-<span class="c1"># util</span>
 <div class="viewcode-block" id="ratio_line"><a class="viewcode-back" href="../../_autosummary/yarara.util.ratio_line.html#yarara.util.ratio_line">[docs]</a><span class="k">def</span> <span class="nf">ratio_line</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">spectrei</span><span class="p">,</span> <span class="n">continuum</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;index  of the  grid element ofline  1,2 plus the  grid the spectrumand the continuum&quot;&quot;&quot;</span>
 
@@ -810,7 +817,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="print_box"><a class="viewcode-back" href="../../_autosummary/yarara.util.print_box.html#yarara.util.print_box">[docs]</a><span class="k">def</span> <span class="nf">print_box</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+<div class="viewcode-block" id="print_box"><a class="viewcode-back" href="../../_autosummary/yarara.util.print_box.html#yarara.util.print_box">[docs]</a><span class="k">def</span> <span class="nf">print_box</span><span class="p">(</span><span class="n">sentence</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
@@ -818,7 +825,9 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="doppler_r"><a class="viewcode-back" href="../../_autosummary/yarara.util.doppler_r.html#yarara.util.doppler_r">[docs]</a><span class="k">def</span> <span class="nf">doppler_r</span><span class="p">(</span><span class="n">lamb</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="viewcode-block" id="doppler_r"><a class="viewcode-back" href="../../_autosummary/yarara.util.doppler_r.html#yarara.util.doppler_r">[docs]</a><span class="k">def</span> <span class="nf">doppler_r</span><span class="p">(</span>
+    <span class="n">lamb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">float32</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">float64</span><span class="p">],</span> <span class="n">v</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">float64</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Relativistic Doppler. Take (wavelength, velocity in [m/s]) and return lambda observed and lambda source&quot;&quot;&quot;</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mf">299.792e6</span>
     <span class="n">button</span> <span class="o">=</span> <span class="kc">False</span>

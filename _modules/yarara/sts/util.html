@@ -115,11 +115,6 @@
      </i>
     </label>
     <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.Rassine_functions.html">
-       Rassine_functions
-      </a>
-     </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.analysis.html">
        analysis
@@ -227,16 +222,6 @@
         </a>
        </li>
       </ul>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_classes.html">
-       my_classes
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../_autosummary/yarara.my_functions.html">
-       my_functions
-      </a>
      </li>
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="../../../_autosummary/yarara.my_rassine_tools.html">
@@ -385,11 +370,6 @@
         </a>
        </li>
        <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.analysis.html">
-         analysis
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.extract.html">
          extract
         </a>
@@ -407,11 +387,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.sts.limbo.html">
          limbo
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../_autosummary/yarara.sts.management.html">
-         management
         </a>
        </li>
        <li class="toctree-l4">
@@ -489,6 +464,11 @@
        <li class="toctree-l4">
         <a class="reference internal" href="../../../_autosummary/yarara.util.ratio_line.html">
          ratio_line
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../_autosummary/yarara.util.sphinx.html">
+         sphinx
         </a>
        </li>
        <li class="toctree-l4">
@@ -575,12 +555,13 @@
 <span class="kn">import</span> <span class="nn">glob</span> <span class="k">as</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="kn">import</span> <span class="n">Fore</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">io</span>
@@ -599,7 +580,9 @@
 <span class="c1"># =============================================================================</span>
 
 
-<div class="viewcode-block" id="yarara_non_zero_flux"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_non_zero_flux.html#yarara.sts.util.yarara_non_zero_flux">[docs]</a><span class="k">def</span> <span class="nf">yarara_non_zero_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">spectrum</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_non_zero_flux"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_non_zero_flux.html#yarara.sts.util.yarara_non_zero_flux">[docs]</a><span class="k">def</span> <span class="nf">yarara_non_zero_flux</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">min_value</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
     <span class="n">file_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">import_spectrum</span><span class="p">()</span>
     <span class="n">hole_left</span> <span class="o">=</span> <span class="n">file_test</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;hole_left&quot;</span><span class="p">]</span>
     <span class="n">hole_right</span> <span class="o">=</span> <span class="n">file_test</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;hole_right&quot;</span><span class="p">]</span>
@@ -635,19 +618,19 @@
 
 
 <div class="viewcode-block" id="yarara_median_master_backup"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_median_master_backup.html#yarara.sts.util.yarara_median_master_backup">[docs]</a><span class="k">def</span> <span class="nf">yarara_median_master_backup</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-    <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-    <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">supress_telluric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">shift_spectrum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">telluric_tresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5750</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5900</span><span class="p">,</span>
+    <span class="n">jdb_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">mask_percentile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Produce a median master by masking region of the spectrum</span>
 
@@ -993,21 +976,21 @@
 
 <div class="viewcode-block" id="yarara_median_master"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_median_master.html#yarara.sts.util.yarara_median_master">[docs]</a><span class="k">def</span> <span class="nf">yarara_median_master</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
-    <span class="n">sub_dico</span><span class="o">=</span><span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
-    <span class="n">continuum</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
-    <span class="n">smooth_box</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-    <span class="n">supress_telluric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">shift_spectrum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">wave_min</span><span class="o">=</span><span class="mi">5750</span><span class="p">,</span>
-    <span class="n">wave_max</span><span class="o">=</span><span class="mi">5900</span><span class="p">,</span>
-    <span class="n">bin_berv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">bin_snr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">telluric_tresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">jdb_range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="n">mask_percentile</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-    <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">sub_dico</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;matching_diff&quot;</span><span class="p">,</span>
+    <span class="n">continuum</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span>
+    <span class="n">smooth_box</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">supress_telluric</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">shift_spectrum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wave_min</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5750</span><span class="p">,</span>
+    <span class="n">wave_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5900</span><span class="p">,</span>
+    <span class="n">bin_berv</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">bin_snr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">telluric_tresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">jdb_range</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">mask_percentile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Produce a median master by masking region of the spectrum</span>
 
@@ -1210,7 +1193,9 @@
 <span class="c1"># =============================================================================</span>
 
 
-<div class="viewcode-block" id="yarara_cut_spectrum"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_cut_spectrum.html#yarara.sts.util.yarara_cut_spectrum">[docs]</a><span class="k">def</span> <span class="nf">yarara_cut_spectrum</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">wave_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wave_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="yarara_cut_spectrum"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_cut_spectrum.html#yarara.sts.util.yarara_cut_spectrum">[docs]</a><span class="k">def</span> <span class="nf">yarara_cut_spectrum</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">wave_min</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">wave_max</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Cut the spectrum time-series borders to reach the specified wavelength limits (included)</span>
 <span class="sd">    There is no way to cancel this step ! Use it wisely.&quot;&quot;&quot;</span>
 
@@ -1354,8 +1339,12 @@
 
 
 <div class="viewcode-block" id="yarara_poissonian_noise"><a class="viewcode-back" href="../../../_autosummary/yarara.sts.util.yarara_poissonian_noise.html#yarara.sts.util.yarara_poissonian_noise">[docs]</a><span class="k">def</span> <span class="nf">yarara_poissonian_noise</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span> <span class="n">noise_wanted</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">wave_ref</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat_snr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">9</span>
-<span class="p">):</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">spec_time_series</span><span class="p">,</span>
+    <span class="n">noise_wanted</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">wave_ref</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flat_snr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_table</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">import_material</span><span class="p">()</span>
 

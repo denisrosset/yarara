@@ -24,6 +24,7 @@ util
       print_box
       print_iter
       ratio_line
+      sphinx
       yarara_artefact_suppressed
    
    
