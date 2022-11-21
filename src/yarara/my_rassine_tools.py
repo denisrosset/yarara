@@ -779,6 +779,7 @@ class spec_time_series(object):
     def yarara_produce_mask_frog(
         self: spec_time_series, frog_file: str = root + "/Python/Material/Ghost_HARPS03.p"
     ) -> None:
+        #Frog file = Dictionnary containing a 2D wave matrix and 2D contaminations images
         return sts.instrument.yarara_produce_mask_frog(self, frog_file)
 
     def yarara_correct_frog(
